@@ -1,96 +1,97 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js" integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <title>anexo4-pag27-ej1</title>
-</head>
-<style type="text/css">
-    body {
-        font-family: Arial, sans-serif;
-    }
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+        }
 
-    h2 {
-        width: 80%;
-        height: auto;
-        text-align: center;
-        color: white;
-        background-color: blue;
+        h2 {
+            width: 80%;
+            height: auto;
+            text-align: center;
+            color: white;
+            background-color: blue;
 
-        margin-left: 10%;
-    }
+            margin-left: 10%;
+        }
 
-    small {
-        border: 2px solid tomato;
-        background-color: #FC9;
-    }
-</style>
+        small {
+            border: 2px solid tomato;
+            background-color: #FC9;
+        }
+    </style>
 </head>
 
 <body>
 
-<h2>ANEXO 3 - Pag 35 implementar las siguientes selecciones empleando JQuery:</h2>
-<ul>
-    <li> Seleccionar todos los elementos div que poseen la clase “module”.</li>
-    <li> Seleccionar el tercer ítem de la lista desordenada con id= #myList.</li>
-    <li> Seleccionar el elemento label del elemento input utilizando un selector de
-        atributo.</label></li>
-    <li> Averiguar cuantos elementos en la página están ocultos (length).</li>
-    <li> Averiguar cuantas imágenes en la página poseen el atributo alt.</li>
-    <li> Seleccionar todas las filas impares del cuerpo de la tabla.</li>
+    <h2>ANEXO 3 - Pag 35 implementar las siguientes selecciones empleando JQuery:</h2>
+    <ul>
+        <li> Seleccionar todos los elementos div que poseen la clase “module”.</li>
+        <li> Seleccionar el tercer ítem de la lista desordenada con id= #myList.</li>
+        <li> Seleccionar el elemento label del elemento input utilizando un selector de
+            atributo.</label></li>
+        <li> Averiguar cuantos elementos en la página están ocultos (length).</li>
+        <li> Averiguar cuantas imágenes en la página poseen el atributo alt.</li>
+        <li> Seleccionar todas las filas impares del cuerpo de la tabla.</li>
 
-</ul>
-<small>
-    (*) Para comprobar las selecciones almacenalas en una variable y muéstrala en la consola del
-    navegador mediante el comando Console.dir().</small>
-<hr>
-
-<div class="module">
-    <ul id="myList">
-        <li>Fila con Index #0</li>
-        <li>Fila con Index #1</li>
-        <li>Fila con Index #2</li>
-        <li>Fila con Index #3</li>
     </ul>
-</div>
+    <small>
+        (*) Para comprobar las selecciones almacenalas en una variable y muéstrala en la consola del
+        navegador mediante el comando Console.dir().</small>
+    <hr>
 
-<div>
-    <form id="formulario">
-        <label for="hombre">Hombre</label>
-        <input type="radio" name="gender" id="hombre" value="hombre"><br>
-        <label for="mujer">Mujer</label>
-        <input type="radio" name="gender" id="mujer" value="mujer"><br>
-        <label for="otro">Otro</label>
-        <input type="radio" name="gender" id="otro" value="otro"><br><br>
-    </form>
-</div>
+    <div class="module">
+        <ul id="myList">
+            <li>Fila con Index #0</li>
+            <li>Fila con Index #1</li>
+            <li>Fila con Index #2</li>
+            <li>Fila con Index #3</li>
+        </ul>
+    </div>
 
-<div class="module">
-    <table id="myTable" border="1">
-        <tr>
-            <td>Celda con Index #0</td>
-        </tr>
-        <tr>
-            <td>Celda con Index #1</td>
-        </tr>
-        <tr>
-            <td>Celda con Index #2</td>
-        </tr>
-        <tr>
-            <td>Celda con Index #3</td>
-        </tr>
-    </table>
-</div>
+    <div>
+        <form id="formulario">
+            <label for="hombre">Hombre</label>
+            <input type="radio" name="gender" id="hombre" value="hombre"><br>
+            <label for="mujer">Mujer</label>
+            <input type="radio" name="gender" id="mujer" value="mujer"><br>
+            <label for="otro">Otro</label>
+            <input type="radio" name="gender" id="otro" value="otro"><br><br>
+        </form>
+    </div>
 
-<div>
-    <img src="https://picsum.photos/200" height="200" width="200" alt="alternatetext">
-    <img src="https://picsum.photos/200" height="200" width="200" alt="alternatetext">
-</div>
-<body>
+    <div class="module">
+        <table id="myTable" border="1">
+            <tr>
+                <td>Celda con Index #0</td>
+            </tr>
+            <tr>
+                <td>Celda con Index #1</td>
+            </tr>
+            <tr>
+                <td>Celda con Index #2</td>
+            </tr>
+            <tr>
+                <td>Celda con Index #3</td>
+            </tr>
+        </table>
+    </div>
 
-    <!-- Partiendo de la página index.html implementar las siguientes selecciones empleando
+    <div>
+        <img src="https://picsum.photos/200" height="200" width="200" alt="alternatetext">
+        <img src="https://picsum.photos/200" height="200" width="200" alt="alternatetext">
+    </div>
+
+    <body>
+
+        <!-- Partiendo de la página index.html implementar las siguientes selecciones empleando
 JQuery:
 • Seleccionar todas las imágenes en la página mostrando en la consola el valor
 del atributo “alt” de cada imagen.
@@ -102,38 +103,43 @@ continuación navegar por el DOM hasta el elemento del botón submit.
 • Seleccionar el primer ítem de la lista con id=”#slideshow”; añadirle la clase
 “current” al mismo y luego añadir la clase “disabled” al resto de elementos
 hermanos -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
+        <script>
 
-    <script>
-        // 1. Seleccionar todas las imágenes en la página mostrando en la consola el valor
-        // del atributo “alt” de cada imagen.
-        var imagenes = $("img");
-        console.log(imagenes);
-        console.log(imagenes[0].alt);
-        console.log(imagenes[1].alt);
+            $().ready(function () {
 
-        // 2. Seleccionar el elemento input del formulario y añadirle la clase “input_text”.
-        var input = $("input");
-        input.addClass("input_text");
+                // 1. Seleccionar todas las imágenes en la página mostrando en la consola el valor
+                // del atributo “alt” de cada imagen.
+                var imagenes = $("img");
+                console.log(imagenes);
+                console.log(imagenes[0].alt);
+                console.log(imagenes[1].alt);
 
-        // 3. Seleccionar el ítem que posee la clase “current” dentro de la lista id=myList,
-        // eliminarlo de la lista, y añadir la clase “current” al siguiente ítem de la lista.
-        var current = $(".current");
-        current.removeClass("current");
-        current.next().addClass("current");
+                // 2. Seleccionar el elemento input del formulario y añadirle la clase “input_text”.
+                var input = $("input");
+                input.addClass("input_text");
 
-        // 4. Seleccionar el elemento select dentro del elemento con “id=specials”, y a
-        // continuación navegar por el DOM hasta el elemento del botón submit.
-        var select = $("#specials select");
-        var submit = select.next().next().next();
-        console.log(submit);
+                // 3. Seleccionar el ítem que posee la clase “current” dentro de la lista id=myList,
+                // eliminarlo de la lista, y añadir la clase “current” al siguiente ítem de la lista.
+                var current = $(".current");
+                current.removeClass("current");
+                current.next().addClass("current");
 
-        // 5. Seleccionar el primer ítem de la lista con id=”#slideshow”; añadirle la clase
-        // “current” al mismo y luego añadir la clase “disabled” al resto de elementos
-        // hermanos
-        var slideshow = $("#slideshow li");
-        slideshow.first().addClass("current");
-        slideshow.not(".current").addClass("disabled");
-    </script>
-    
-</body>
+                // 4. Seleccionar el elemento select dentro del elemento con “id=specials”, y a
+                // continuación navegar por el DOM hasta el elemento del botón submit.
+                var select = $("#specials select");
+                var submit = select.next().next().next();
+                console.log(submit);
+
+                // 5. Seleccionar el primer ítem de la lista con id=”#slideshow”; añadirle la clase
+                // “current” al mismo y luego añadir la clase “disabled” al resto de elementos
+                // hermanos
+                var slideshow = $("#slideshow li");
+                slideshow.first().addClass("current");
+                slideshow.not(".current").addClass("disabled");
+            });
+        </script>
+
+    </body>
+
 </html>

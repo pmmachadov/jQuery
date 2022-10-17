@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>anexo4-pag27-ej1</title>
+<style type="text/css">
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    h2 {
+        width: 80%;
+        height: auto;
+        text-align: center;
+        color: white;
+        background-color: blue;
+
+        margin-left: 10%;
+    }
+
+    small {
+        border: 2px solid tomato;
+        background-color: #FC9;
+    }
+</style>
+</head>
+
+<body>
+Partiendo de la página index.html implementar las siguientes selecciones empleando
+JQuery:
+• Añadir 5 nuevos ítems al final de la lista desordenada con id=”myList”
+empleando un bucle.
+• Remover los ítems impares de la lista.
+• Añadir un elemento h2 y un párrafo al final de la capa con el estilo ”module”.
+• Añadir otra opción al elemento select con el valor “Wednesday”.
+• Añadir una nueva capa con el estilo “module” a la página después del último;
+luego añadir una copia de una de las imágenes existentes dentro de la nueva
+capa.
+<small>
+    (*) Para comprobar las selecciones almacenalas en una variable y muéstrala en la consola del
+    navegador mediante el comando Console.dir().</small>
+<hr>
+
+<div class="module">
+    <ul id="myList">
+        <li>Fila con Index #0</li>
+        <li>Fila con Index #1</li>
+        <li>Fila con Index #2</li>
+        <li>Fila con Index #3</li>
+    </ul>
+</div>
+
+<div>
+    <form id="formulario">
+        <label for="hombre">Hombre</label>
+        <input type="radio" name="gender" id="hombre" value="hombre"><br>
+        <label for="mujer">Mujer</label>
+        <input type="radio" name="gender" id="mujer" value="mujer"><br>
+        <label for="otro">Otro</label>
+        <input type="radio" name="gender" id="otro" value="otro"><br><br>
+    </form>
+</div>
+
+<div class="module">
+    <table id="myTable" border="1">
+        <tr>
+            <td>Celda con Index #0</td>
+        </tr>
+        <tr>
+            <td>Celda con Index #1</td>
+        </tr>
+        <tr>
+            <td>Celda con Index #2</td>
+        </tr>
+        <tr>
+            <td>Celda con Index #3</td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <img src="https://picsum.photos/200" height="200" width="200" alt="alternatetext">
+    <img src="https://picsum.photos/200" height="200" width="200" alt="alternatetext">
+</div>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+        //Añadir 5 nuevos ítems al final de la lista desordenada con id=”myList” empleando un bucle.
+        for (let i = 0; i < 5; i++) {
+            $("#myList").append("<li>Fila con Index #" + i + "</li>");
+        }
+        //Remover los ítems impares de la lista.
+        $("#myList li:odd").remove();
+        //Añadir un elemento h2 y un párrafo al final de la capa con el estilo ”module”.
+        $(".module").append("<h2>Titulo</h2>");
+        $(".module").append("<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>");
+        //Añadir otra opción al elemento select con el valor “Wednesday”.
+        $("#myTable").append("<tr><td>Wednesday</td></tr>");
+        //Añadir una nueva capa con el estilo “module” a la página después del último; luego añadir una copia de una de las imágenes existentes dentro de la nueva capa.
+        $(".module").after("<div class='module'></div>");
+        $(".module").last().append($("img").first().clone());
+        });
+</script>    
+    
+</body>
+</html>
