@@ -5,17 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>anexo5-pag24-ej2</title>
+    <title>anexo5-pag24-ej3</title>
 </head>
 
 <body>
-    <!-- Crea una página provista de una imagen y cuatro botones: “Arriba”, “Abajo”,
-    “Izquierda”, “Derecha”. Cada botón al ser pulsado debe desplazar la imagen 1
-    pixel en la dirección correspondiente. Para ello debes crear cuatro funciones de
-    javascript: MoverArriba(), MoverAbajo(), MoverIzquierda(), y MoverDerecha()
-    cada una de las cuales modificar la posición de la imagen 1 píxel en la dirección
-    correspondiente.  -->
 
+    <!-- Modifica el ejercicio anterior para emplear únicamente una función de
+    Javascript llamada Mover.
+    Esta función deberá recibir como único parámetro
+    un valor que indique la dirección del movimiento de la imagen.
+    La función debe
+    evitar que la imagen salga de los límites visibles de la pantalla.
+
+    Para conocer los límites de la pantalla puede emplearse las propiedades width y
+    height del objeto screen. -->
 
     <div id="div1" style="border: 5px solid black; width: 400px; height: 400px;">
         <img src="./assets/super-mario.jpg" alt="imagen" id="imagen">
@@ -48,8 +51,9 @@
                 $("#imagen").animate({
                     left: "+=10px"
                 }, 0);
-                  });
-
+                // Si la imagen llega al limite del div debe detenerse.
+     
+            });
         });
 
     </script>
@@ -62,6 +66,14 @@
             position: relative;
         }
     </style>
+
+
+
+
+
+
+
+
 </body>
 
 </html>
