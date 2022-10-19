@@ -20,7 +20,7 @@
     Para conocer los límites de la pantalla puede emplearse las propiedades width y
     height del objeto screen. -->
 
-    <div id="div1" style="border: 5px solid black; width: 400px; height: 400px;">
+    <div id="div1">
         <img src="./assets/super-mario.jpg" alt="imagen" id="imagen">
     </div>
     <button id="arriba">Arriba</button>
@@ -51,11 +51,48 @@
                 $("#imagen").animate({
                     left: "+=10px"
                 }, 0);
-                // Si la imagen llega al limite del div debe detenerse.
-     
             });
         });
 
+        function Mover(direccion) {
+
+            if ($("#imagen").position().left = window.screen.width) {
+                $("#imagen").stop();
+            }
+            if ($("#imagen").position().left = 0) {
+                $("#imagen").stop();
+            }
+            if ($("#imagen").position().top = window.screen.height) {
+                $("#imagen").stop();
+            }
+            if ($("#imagen").position().top = 0) {
+                $("#imagen").stop();
+            } else {
+
+                switch (direccion) {
+                    case "arriba":
+                        $("#imagen").animate({
+                            top: "-=10px"
+                        }, 0);
+                        break;
+                    case "abajo":
+                        $("#imagen").animate({
+                            top: "+=10px"
+                        }, 0);
+                        break;
+                    case "izquierda":
+                        $("#imagen").animate({
+                            left: "-=10px"
+                        }, 0);
+                        break;
+                    case "derecha":
+                        $("#imagen").animate({
+                            left: "+=10px"
+                        }, 0);
+                        break;
+                }
+            }
+        }
     </script>
     <style>
         #imagen {
@@ -64,16 +101,9 @@
 
         #div1 {
             position: relative;
+            width: 100%;
         }
     </style>
-
-
-
-
-
-
-
-
 </body>
 
 </html>
