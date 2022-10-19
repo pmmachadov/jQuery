@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>anexo5-pag24-ej1</title>
+</head>
+<body>
+    <!-- Utiliza jQuery y crea una página dotada de una serie de botones con los nombres “Mercurio”,
+“Venus”, “Tierra”,”Marte”, y una imagen. Cada vez que el usuario pulse uno de
+los botones deberá mostrarse la imagen correspondiente al planeta indicado.
+Puedes descargar las imágenes de Google.  -->
+
+    <button id="mercurio">Mercurio</button>
+    <button id="venus">Venus</button>
+    <button id="tierra">Tierra</button>
+    <button id="marte">Marte</button>
+    <img src="" alt="">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js" integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function(){
+            $("#mercurio").click(function(){
+                $("img").attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Mercury_in_color_-_Prockter07-edit1.jpg/1200px-Mercury_in_color_-_Prockter07-edit1.jpg");
+            });
+            $("#venus").click(function(){
+                $("img").attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Venus_globe.jpg/1200px-Venus_globe.jpg");
+            });
+            $("#tierra").click(function(){
+                $("img").attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/1200px-The_Earth_seen_from_Apollo_17.jpg");
+            });
+            $("#marte").click(function(){
+                $("img").attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/1200px-OSIRIS_Mars_true_color.jpg");
+            });
+        });
+    </script>
+
+
+
+</body>
+</html>
