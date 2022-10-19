@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>anexo5-pag24-ej2</title>
+</head>
+
+<body>
+    <!-- Utiliza jQuery y crea una página provista de una imagen y cuatro botones: “Arriba”, “Abajo”,
+“Izquierda”, “Derecha”. Cada botón al ser pulsado debe desplazar la imagen 1
+pixel en la dirección correspondiente. Para ello debes crear cuatro funciones de
+javascript: MoverArriba(), MoverAbajo(), MoverIzquierda(), y MoverDerecha()
+cada una de las cuales modificar la posición de la imagen 1 píxel en la dirección
+correspondiente. Utiliza jquery y haz que la imagen se encuentre en un div con un borde de 2px y que la imagen se pueda mover dentro de esos limites la imagen debe tener 100px de altura y 100px de ancho. El area del div en el que se movera la imagen debe tener 600px de largo por 600 px de ancho. Utiliza la funcion animate.-->
+
+    <div id="div1" style="border: 5px solid black; width: 400px; height: 400px;">
+        <img src="./assets/super-mario.jpg" alt="imagen" id="imagen">
+    </div>
+    <br>
+    <button id="arriba">Arriba</button>
+    <button id="abajo">Abajo</button>
+    <button id="izquierda">Izquierda</button>
+    <button id="derecha">Derecha</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#arriba").click(function () {
+                $("#imagen").animate({
+                    top: "-=10px"
+                }, 0);
+            });
+            $("#abajo").click(function () {
+                $("#imagen").animate({
+                    top: "+=10px"
+                }, 0);
+            });
+            $("#izquierda").click(function () {
+                $("#imagen").animate({
+                    left: "-=10px"
+                }, 0);
+            });
+            $("#derecha").click(function () {
+                $("#imagen").animate({
+                    left: "+=10px"
+                }, 0);
+            });
+        });
+
+    </script>
+    <style>
+        #imagen {
+            position: relative;
+         
+
+        }
+    </style>
+
+</body>
+
+</html>
