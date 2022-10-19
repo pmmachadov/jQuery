@@ -9,17 +9,17 @@
 </head>
 
 <body>
-    <!-- Utiliza jQuery y crea una página provista de una imagen y cuatro botones: “Arriba”, “Abajo”,
-“Izquierda”, “Derecha”. Cada botón al ser pulsado debe desplazar la imagen 1
-pixel en la dirección correspondiente. Para ello debes crear cuatro funciones de
-javascript: MoverArriba(), MoverAbajo(), MoverIzquierda(), y MoverDerecha()
-cada una de las cuales modificar la posición de la imagen 1 píxel en la dirección
-correspondiente. Utiliza jquery y haz que la imagen se encuentre en un div con un borde de 2px y que la imagen se pueda mover dentro de esos limites la imagen debe tener 100px de altura y 100px de ancho. El area del div en el que se movera la imagen debe tener 600px de largo por 600 px de ancho. Utiliza la funcion animate.-->
+    <!-- Crea una página provista de una imagen y cuatro botones: “Arriba”, “Abajo”,
+    “Izquierda”, “Derecha”. Cada botón al ser pulsado debe desplazar la imagen 1
+    pixel en la dirección correspondiente. Para ello debes crear cuatro funciones de
+    javascript: MoverArriba(), MoverAbajo(), MoverIzquierda(), y MoverDerecha()
+    cada una de las cuales modificar la posición de la imagen 1 píxel en la dirección
+    correspondiente.  -->
+
 
     <div id="div1" style="border: 5px solid black; width: 400px; height: 400px;">
         <img src="./assets/super-mario.jpg" alt="imagen" id="imagen">
     </div>
-    <br>
     <button id="arriba">Arriba</button>
     <button id="abajo">Abajo</button>
     <button id="izquierda">Izquierda</button>
@@ -48,18 +48,24 @@ correspondiente. Utiliza jquery y haz que la imagen se encuentre en un div con u
                 $("#imagen").animate({
                     left: "+=10px"
                 }, 0);
+                // Si la imagen llega al limite del div debe detenerse. La imagen no debe salir del div utilizando jquery.
+                if ($("#imagen").offset().left > $("#div1").offset().left + $("#div1").width()) {
+                    $("#imagen").stop();
+                }
             });
+
         });
 
     </script>
     <style>
         #imagen {
-            position: relative;
-         
+            position: absolute
+        }
 
+        #div1 {
+            position: relative;
         }
     </style>
-
 </body>
 
 </html>
