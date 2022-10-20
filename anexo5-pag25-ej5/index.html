@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>anexo5-pag25-ej5</title>
+
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            width: 80%;
+            height: auto;
+            text-align: center;
+            color: white;
+            background-color: blue;
+            margin-left: 10%;
+        }
+        small {
+            border: 2px solid tomato;
+            background-color: #FC9;
+        }
+        .containerMenu ul {
+            text-align: center;
+            list-style-type: none;
+            background: beige;
+        }
+        .containerMenu ul li {
+            border: solid;
+            width: 200px;
+            margin: 5px;
+            display: inline-block;
+        }
+        .current {
+            background: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="identificador">ANEXO 5 - Pag 25 Ej 5 JQuery:</h2>
+    <h3>Tomando como punto de partida la página ‘index.html’, implementar las siguientes operaciones para simular un
+        sistema de navegación por pestañas:</h3>
+    <ul>
+        <li>Oculta todas las capas con la clase de estilo “module”</li>
+        <li>Crea una lista desordenada antes de la primera capa con estilo “module”. Esta servirá de marco para las
+            pestañas</li>
+        <li>Recorre las capas con estilo “module” empleando $().each() y crea un elemento para la lista desordenada por
+            cada capa con el texto presente en su encabezado <code>&lt;h2&gt;</code>. Estas son las pestañas.</li>
+        <li> Registra el evento “click” a cada elemento de la lista de modo que se realicen las siguientes operaciones:
+            <ul>
+                <li>Oculte todos las capas con estilo “module” mostrando únicamente la correspondiente al elemento.</li>
+                <li>Elimina la clase “current” de todos los elementos de la lista añadiéndolo al elemento seleccionado
+                </li>
+                <li>Mostrar la primera pestaña ( simulando la selección de la primera pestaña )</li>
+            </ul>
+        </li>
+    </ul>
+    <small>Cipsa</small>
+    <hr>
+    <div class="containerMenu">
+        CONTENIDO
+    </div>
+    <hr>
+    <div class="module">
+        <h2>LISTA</h2>
+        <ul id="myList">
+            <li>Fila con Index #0</li>
+            <li>Fila con Index #1</li>
+            <li>Fila con Index #2</li>
+            <li>Fila con Index #3</li>
+        </ul>
+    </div>
+
+    <div class="module">
+        <h2>FORMULARIO</h2>
+        <form id="formulario">
+            <label for="hombre">Hombre</label>
+            <input type="radio" name="gender" id="hombre" value="hombre"><br>
+            <label for="mujer">Mujer</label>
+            <input type="radio" name="gender" id="mujer" value="mujer"><br>
+            <label for="otro">Otro</label>
+            <input type="radio" name="gender" id="otro" value="otro"><br><br>
+        </form>
+    </div>
+
+    <div class="module">
+        <h2>TABLA</h2>
+        <table id="myTable" border="1">
+            <tr>
+                <td>Celda con Index #0</td>
+            </tr>
+            <tr>
+                <td>Celda con Index #1</td>
+            </tr>
+            <tr>
+                <td>Celda con Index #2</td>
+            </tr>
+            <tr>
+                <td>Celda con Index #3</td>
+            </tr>
+        </table>
+    </div>
+    <div class="module">
+        <h2>IMAGENES</h2>
+        <img src="https://loremflickr.com/320/240" alt="img1">
+        <img src="https://loremflickr.com/320/240" alt="img2">
+    </div>
+    <div>
+        CONTENIDO EXTRA
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
+    <script>
+        $().ready(function () {
+            //Ocultar todas las capas con la clase de estilo “module”
+            $(".module").hide();
+            //Crear una lista desordenada antes de la primera capa con estilo “module”. Esta servirá de marco para las pestañas
+            $(".module").first().before("<ul id='menu'></ul>");
+            //Recorrer las capas con estilo “module” empleando $().each() y crear un elemento para la lista desordenada por cada capa con el texto presente en su encabezado <code>&lt;h2&gt;</code>. Estas son las pestañas.
+            $(".module").each(function (index) {
+                const titulo = $(this).find("h2").text();
+                $("#menu").append("<li>" + titulo + "</li>");
+            });
+            //Registra el evento “click” a cada elemento de la lista de modo que se realicen las siguientes operaciones:            
+            $("#menu li").click(function () {
+                //Ocultar todos las capas con estilo “module” mostrando únicamente la correspondiente al elemento.
+                $(".module").hide();
+                $(".module").eq($(this).index()).show();
+                //Eliminar la clase “current” de todos los elementos de la lista añadiéndolo al elemento seleccionado
+                $("#menu li").removeClass("current");
+                $(this).addClass("current");
+            });
+            //Mostrar la primera pestaña ( simulando la selección de la primera pestaña )
+            $("#menu li").first().click();
+        });
+    </script>
+</body>
+</html>

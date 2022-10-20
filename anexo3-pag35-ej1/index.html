@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>anexo3-pag35-ej1</title>
 </head>
 <body>
 	
@@ -36,14 +36,15 @@
 
 	<h2>ANEXO 3 - Pag 35 implementar las siguientes selecciones empleando JQuery:</h2>
 	<ul>
-		<li> Seleccionar todos los elementos div que poseen la clase “module”.</li>
-		<li> Seleccionar el tercer ítem de la lista desordenada con id= #myList.</li>
-		<li> Seleccionar el elemento label del elemento input utilizando un selector de
-			atributo.</label></li>
-		<li> Averiguar cuantos elementos en la página están ocultos (length).</li>
-		<li> Averiguar cuantas imágenes en la página poseen el atributo alt.</li>
-		<li> Seleccionar todas las filas impares del cuerpo de la tabla.</li>
-
+			<li> Seleccionar todos los elementos div que poseen la clase “module”.</li>
+			<li> Seleccionar el tercer ítem de la lista desordenada con id= #myList.</li>
+			<li> Seleccionar el elemento label del elemento input utilizando un selector de
+				atributo.</label></li>
+			<li> Averiguar cuantos elementos en la página están ocultos (length).</li>
+			<li> Averiguar cuantas imágenes en la página poseen el atributo alt.</li>
+			<li> Seleccionar todas las filas impares del cuerpo de la tabla.</li>
+			(*) Para comprobar las selecciones almacenalas en una variable y muéstrala en la consola del
+			navegador mediante el comando Console.dir().
 	</ul>
 	<small>
 		(*) Para comprobar las selecciones almacenalas en una variable y muéstrala en la consola del
@@ -99,32 +100,21 @@
 			// Seleccionar todos los elementos div que poseen la clase “module”.
 			let divModule = $("div.module");
 			console.dir(divModule);
-			console.log("divModule.length: " + divModule.length);
-
 			// Seleccionar el tercer ítem de la lista desordenada con id= #myList.
 			let tercerItem = $("#myList li:eq(2)");
 			console.dir(tercerItem);
-			console.log("tercerItem.length: " + tercerItem.length);
-
 			// Seleccionar el elemento label del elemento input utilizando un selector de atributo.
 			let labelInput = $("input[type='radio'] + label");
 			console.dir(labelInput);
-			console.log("labelInput.length: " + labelInput.length);
-
 			// Averiguar cuantos elementos en la página están ocultos (length).
 			let elementosOcultos = $("*:hidden").length;
 			console.dir(elementosOcultos);
-			console.log("elementosOcultos: " + elementosOcultos);
-
 			// Averiguar cuantas imágenes en la página poseen el atributo alt.
 			let imagenesAlt = $("img[alt]").length;
 			console.dir(imagenesAlt);
-			console.log("imagenesAlt: " + imagenesAlt);
-
 			// Seleccionar todas las filas impares del cuerpo de la tabla.
 			let = $("#myTable tr:odd");
 			console.dir(let);
-			console.log("let.length: " + let.length);
 		});
 	</script>
 

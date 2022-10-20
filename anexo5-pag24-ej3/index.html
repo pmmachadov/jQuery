@@ -15,11 +15,8 @@
     Esta función deberá recibir como único parámetro
     un valor que indique la dirección del movimiento de la imagen.
     La función debe
-    evitar que la imagen salga de los límites visibles de la pantalla.
-
-    Para conocer los límites de la pantalla puede emplearse las propiedades width y
-    height del objeto screen. -->
-
+    evitar que la imagen salga de los límites visibles de la pantalla. Utiliza offset para completar el codigo.
+  -->
     <div id="div1">
         <img src="./assets/super-mario.jpg" alt="imagen" id="imagen">
     </div>
@@ -29,79 +26,99 @@
     <button id="derecha">Derecha</button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
+------window la 
+la resta de la imagen
+la condicion que no llegue al numero
+
+
+<div class="d-flex">
+
+
+
+
+    <div class="flex-shrink-0">
+        <img src="" alt="" width="300">
+    </div>
+    <div class="flex-grow-1 ms-3">
+        <h5 class="mt-0">Media heading</h5>
+        <p>This is some content from a media component. You can replace this with any content and adjust it as needed.</p>
+  </div>
+</div>
+
 
     <script>
         $(document).ready(function () {
             $("#arriba").click(function () {
-                $("#imagen").animate({
-                    top: "-=10px"
-                }, 0);
+                const top = $("#imagen").offset().top;
+                let offset = $("#imagen").offset();
+
+                if (top < 400) {
+                    $("#imagen").animate({
+                        top: "-=50px"
+                    }, 0);
+                } else {
+                    $("#imagen").animate({
+                        top: "+=0px"
+                    }, 0);
+                }
             });
             $("#abajo").click(function () {
-                $("#imagen").animate({
-                    top: "+=10px"
-                }, 0);
+                const top = $("#imagen").offset().top;
+                let offset = $("#imagen").offset();
+
+                if (top > 0) {
+                    $("#imagen").animate({
+                        top: "+=50px"
+                    }, 0);
+                } else {
+                    $("#imagen").animate({
+                        top: "+=0px"
+                    }, 0);
+                }
             });
             $("#izquierda").click(function () {
-                $("#imagen").animate({
-                    left: "-=10px"
-                }, 0);
+                const left = $("#imagen").offset().left;
+                let offset = $("#imagen").offset();
+
+                if (left > 0) {
+                    $("#imagen").animate({
+                        left: "-=50px"
+                    }, 0);
+                } else {
+                    $("#imagen").animate({
+                        left: "+=0px"
+                    }, 0);
+                }
             });
             $("#derecha").click(function () {
-                $("#imagen").animate({
-                    left: "+=10px"
-                }, 0);
+                const left = $("#imagen").offset().left;
+                let offset = $("#imagen").offset();
+
+                if (left < 400) {
+                    $("#imagen").animate({
+                        right: "-=50px"
+                    }, 0);
+                } else {
+                    $("#imagen").animate({
+                        right: "-=0px"
+                    }, 0);
+                }
             });
         });
 
-        function Mover(direccion) {
-
-            if ($("#imagen").position().left = window.screen.width) {
-                $("#imagen").stop();
-            }
-            if ($("#imagen").position().left = 0) {
-                $("#imagen").stop();
-            }
-            if ($("#imagen").position().top = window.screen.height) {
-                $("#imagen").stop();
-            }
-            if ($("#imagen").position().top = 0) {
-                $("#imagen").stop();
-            } else {
-
-                switch (direccion) {
-                    case "arriba":
-                        $("#imagen").animate({
-                            top: "-=10px"
-                        }, 0);
-                        break;
-                    case "abajo":
-                        $("#imagen").animate({
-                            top: "+=10px"
-                        }, 0);
-                        break;
-                    case "izquierda":
-                        $("#imagen").animate({
-                            left: "-=10px"
-                        }, 0);
-                        break;
-                    case "derecha":
-                        $("#imagen").animate({
-                            left: "+=10px"
-                        }, 0);
-                        break;
-                }
-            }
-        }
     </script>
     <style>
         #imagen {
-            position: absolute
+            position: absolute;
+            text-align: center;
+  justify-content: center;
+  align-items: center;
         }
 
         #div1 {
             position: relative;
             width: 100%;
+            height: 100%;
         }
     </style>
 </body>
