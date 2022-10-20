@@ -10,38 +10,38 @@
     <!-- Utiliza jQuery y crea una página dotada de una serie de botones con los nombres “Mercurio”,
 “Venus”, “Tierra”,”Marte”, y una imagen. Cada vez que el usuario pulse uno de
 los botones deberá mostrarse la imagen correspondiente al planeta indicado.
-Puedes descargar las imágenes de Google.  -->
+Puedes descargar las imágenes de Google.  -------------lINKEO Las imagenes con los botones quizas por las primeras letras del id que contenga mercurio por ejemplo.-->
 
-    <button id="mercurio">Mercurio</button>
-    <button id="venus">Venus</button>
-    <button id="tierra">Tierra</button>
-    <button id="marte">Marte</button>
-    <img src="" alt="">
+    <button id="mercurio-Btn">Mercurio</button>
+    <button id="venus-Btn">Venus</button>
+    <button id="tierra-Btn">Tierra</button>
+    <button id="marte-Btn">Marte</button>
+    <img src="./assets/mercurio.jpg" alt="mercurio" id="mercurio">
+    <img src="./assets/venus.jpg" alt="venus" id="venus">
+    <img src="./assets/tierra.jpg" alt="tierra" id="tierra">
+    <img src="./assets/marte.jpg" alt="marte" id="marte">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js" integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        $(document).ready(function(){
-            $("#mercurio").click(function(){
-                $("img").attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Mercury_in_color_-_Prockter07-edit1.jpg/1200px-Mercury_in_color_-_Prockter07-edit1.jpg");
-            });
-            $("#venus").click(function(){
-                $("img").attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Venus_globe.jpg/1200px-Venus_globe.jpg");
-            });
-            $("#tierra").click(function(){
-                $("img").attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/1200px-The_Earth_seen_from_Apollo_17.jpg");
-            });
-            $("#marte").click(function(){
-                $("img").attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/1200px-OSIRIS_Mars_true_color.jpg");
+
+// Utiliza jQuery y crea una página dotada de una serie de botones con los nombres “Mercurio”,
+// “Venus”, “Tierra”,”Marte”, y una imagen. Cada vez que el usuario pulse uno de
+// los botones deberá mostrarse la imagen correspondiente al planeta indicado. Utiliza handle button y evento click.
+
+        $(document).ready(function(){   
+            for (let i = 0; i < $("img").length; i++) { //Recorro todos los elementos img
+                $("img").eq(i).hide(); //ocultamos todas las imagenes
+            }
+// los botones deberá mostrarse la imagen correspondiente al planeta indicado. Utiliza handle button y evento click.            // handle button and click event
+            $("button").click(function(){
+                // get the id of the button
+                let id = $(this).attr("id");
+                // hide all images
+                $("img").hide();
+                // Muestra la imagen que contenga al menos 5 caracteres del id del boton
+                $("img[id*='"+id.substring(0,5)+"']").show();
             });
         });
     </script>
--------------buscar la foto y buscar nombre unido al nombre de la <footer>
-    handle buttons
-    un evento cuando se haga click
-</footer>
-    
-</footer>
-
-
 </body>
 </html>

@@ -43,7 +43,7 @@
 
     </ul>
     <small>
-        (*) Para comprobar las selecciones almacenalas en una variable y muéstrala en la consola del
+        (*) Para comprobar las selecciones almacenalas en una letiable y muéstrala en la consola del
         navegador mediante el comando Console.dir().</small>
     <hr>
 
@@ -85,8 +85,8 @@
     </div>
 
     <div>
-        <img src="https://picsum.photos/200" height="200" width="200" alt="alternatetext">
-        <img src="https://picsum.photos/200" height="200" width="200" alt="alternatetext">
+        <img src="https://picsum.photos/200" height="200" width="200" alt="alternatetext1">
+        <img src="https://picsum.photos/200" height="200" width="200" alt="alternatetext2">
     </div>
 
     <body>
@@ -108,34 +108,33 @@ hermanos -->
 
             $().ready(function () {
 
-                // 1. Seleccionar todas las imágenes en la página mostrando en la consola el valor
-                // del atributo “alt” de cada imagen.
-                var imagenes = $("img");
-                console.log(imagenes);
-                console.log(imagenes[0].alt);
-                console.log(imagenes[1].alt);
-                ---------con un ciclo
+                // 1. Seleccionar todas las imágenes en la página con un ciclo for, mostrando en la consola el valor del atributo “alt” de cada imagen.
+                let imagenes = $("img");
+                for (let i = 0; i < imagenes.length; i++) {
+                    console.log(imagenes[i].alt);
+                }
 
                 // 2. Seleccionar el elemento input del formulario y añadirle la clase “input_text”.
-                var input = $("input");
+                let input = $("input");
                 input.addClass("input_text");
 
                 // 3. Seleccionar el ítem que posee la clase “current” dentro de la lista id=myList,
                 // eliminarlo de la lista, y añadir la clase “current” al siguiente ítem de la lista.
-                var current = $(".current");
-                current.removeClass("current");
-                current.next().addClass("current");
+                let current = $(".current");    
+                current.removeClass("current"); 
+                current.next().addClass("current");     
 
-                // 4. Seleccionar el elemento select dentro del elemento con “id=specials”, y a
-                // continuación navegar por el DOM hasta el elemento del botón submit.
-                var select = $("#specials select");
-                var submit = select.next().next().next();
+
+                // 4. Seleccionar el elemento select dentro del elemento con “id=specials” con find.
+                // ---------find
+                let select = $("#specials").find("select");
+                let submit = select.parent().next().find("input");
                 console.log(submit);
----------find
+
                 // 5. Seleccionar el primer ítem de la lista con id=”#slideshow”; añadirle la clase
                 // “current” al mismo y luego añadir la clase “disabled” al resto de elementos
                 // hermanos
-                var slideshow = $("#slideshow li");
+                let slideshow = $("#slideshow li");
                 slideshow.first().addClass("current");
                 slideshow.not(".current").addClass("disabled");
             });
