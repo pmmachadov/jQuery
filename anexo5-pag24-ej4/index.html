@@ -37,14 +37,17 @@
   <h2 id="identificador">ANEXO 5 - Pag 18 Ej 4 Implementar las siguientes operaciones empleando JQuery:</h2>
   <ul>
     <li> Establece el valor de la caja de texto igual al del elemento </li>
-    <li> Añadir la clase de estilo “hint” a la caja de texto. ( La clase se encuentra ya declarada en el archivo “css/style.css” ).</li>
+    <li> Añadir la clase de estilo “hint” a la caja de texto. ( La clase se encuentra ya declarada en el archivo
+      “css/style.css” ).</li>
     <li>Elimina el elemento <code>&lt;label&gt;</code>.</li>
-    <li> Registra el evento “focus” a la caja de texto para eliminar el texto de sugerencia y la clase de estilo “hint” cuando ésta tenga el foco.</li>
-    <li> Registra el evento “blur” a la caja de texto para restaurar el texto de sugerencia y la clase de estilo “hint” si no se ha insertado ningún valor al perder el foco.</li>
+    <li> Registra el evento “focus” a la caja de texto para eliminar el texto de sugerencia y la clase de estilo “hint”
+      cuando ésta tenga el foco.</li>
+    <li> Registra el evento “blur” a la caja de texto para restaurar el texto de sugerencia y la clase de estilo “hint”
+      si no se ha insertado ningún valor al perder el foco.</li>
   </ul>
   <small>
-  (*) Para comprobar las selecciones almacenalas en una variable y muéstrala en la consola del
-  navegador mediante el comando Console.dir().</small>
+    (*) Para comprobar las selecciones almacenalas en una variable y muéstrala en la consola del
+    navegador mediante el comando Console.dir().</small>
 
   <label for="cajaTexto">Nombre</label>
   <input id="cajaTexto" type="text" name="cajaTexto" value="" />
@@ -62,7 +65,7 @@
       $('label').remove()
 
       // Registra el evento “focus” a la caja de texto para eliminar el texto de sugerencia y la clase de estilo “hint” cuando ésta tenga el foco.
-        $('#cajaTexto').focus(function () {
+      $('#cajaTexto').focus(function () {
         $(this).val('')
         $(this).removeClass('hint')
       })
