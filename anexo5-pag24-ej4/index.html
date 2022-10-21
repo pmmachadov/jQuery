@@ -1,90 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>anexo5-pag24-ej4</title>
-      <style type="text/css">
-        body {
-          font-family: Arial, sans-serif;
-        }
-        h2 {
-          width: 80%;
-          height: auto;
-          text-align: center;
-          color: white;
-          background-color: blue;
+<html lang="es">
 
-          margin-left: 10%;
-        }
-        small {
-          border: 2px solid tomato;
-          background-color: #fc9;
-        }
-        .hint {
-          background-color: lightblue;
-        }
-      </style>
-    </head>
-  <body>
-    <h2 id="identificador">
-      ANEXO 5 - Pag 18 Ej 4 Implementar las siguientes operaciones empleando
-      JQuery:
-    </h2>
-    <ul>
-      <li>Establece el valor de la caja de texto igual al del elemento</li>
-      <li>
-        Añadir la clase de estilo “hint” a la caja de texto. ( La clase se
-        encuentra ya declarada en el archivo “css/style.css” ).
-      </li>
-      <li>Elimina el elemento <code>&lt;label&gt;</code>.</li>
-      <li>
-        Registra el evento “focus” a la caja de texto para eliminar el texto de
-        sugerencia y la clase de estilo “hint” cuando ésta tenga el foco.
-      </li>
-      <li>
-        Registra el evento “blur” a la caja de texto para restaurar el texto de
-        sugerencia y la clase de estilo “hint” si no se ha insertado ningún
-        valor al perder el foco.
-      </li>
-      <li>
-        Para comprobar las selecciones almacenalas en una variable y muéstrala
-        en la consola del navegador mediante el comando Console.dir().
-      </li>
-    </ul>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>anexo5-pag24-ej4</title>
 
-    <label for="cajaTexto">Nombre</label>
-    <input id="cajaTexto" type="text" name="cajaTexto" value="" />
+  <style type="text/css">
+    body {
+      font-family: Arial, sans-serif;
+    }
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
-    <script>
-      $().ready(function () {
-        // Establece el valor de la caja de texto igual al del elemento
-        $('#cajaTexto').val($('#identificador').text())
+    h2 {
+      width: 80%;
+      height: auto;
+      text-align: center;
+      color: white;
+      background-color: blue;
 
-        // Añadir la clase de estilo “hint” a la caja de texto. ( La clase se encuentra ya declarada en el archivo “css/style.css” ).
-        $('#cajaTexto').addClass('hint')
+      margin-left: 10%;
+    }
 
-        // Elimina el elemento <label>.
-        $('label').remove()
+    small {
+      border: 2px solid tomato;
+      background-color: #fc9;
+    }
 
-        // Registra el evento “focus” a la caja de texto para eliminar el texto de sugerencia y la clase de estilo “hint” cuando ésta tenga el foco.
+    .hint {
+      background-color: lightblue;
+    }
+  </style>
+</head>
+
+<body>
+  <h2 id="identificador">ANEXO 5 - Pag 18 Ej 4 Implementar las siguientes operaciones empleando JQuery:</h2>
+  <ul>
+    <li> Establece el valor de la caja de texto igual al del elemento </li>
+    <li> Añadir la clase de estilo “hint” a la caja de texto. ( La clase se encuentra ya declarada en el archivo “css/style.css” ).</li>
+    <li>Elimina el elemento <code>&lt;label&gt;</code>.</li>
+    <li> Registra el evento “focus” a la caja de texto para eliminar el texto de sugerencia y la clase de estilo “hint” cuando ésta tenga el foco.</li>
+    <li> Registra el evento “blur” a la caja de texto para restaurar el texto de sugerencia y la clase de estilo “hint” si no se ha insertado ningún valor al perder el foco.</li>
+  </ul>
+  <small>
+  (*) Para comprobar las selecciones almacenalas en una variable y muéstrala en la consola del
+  navegador mediante el comando Console.dir().</small>
+
+  <label for="cajaTexto">Nombre</label>
+  <input id="cajaTexto" type="text" name="cajaTexto" value="" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
+  <script>
+    $().ready(function () {
+      // Establece el valor de cada caja de texto igual al del elemento
+      $('#cajaTexto').val($('#identificador').text())
+
+      // Añadir la clase de estilo “hint” a la caja de texto. ( La clase se encuentra ya declarada en el archivo “css/style.css” ).
+      $('#cajaTexto').addClass('hint')
+
+      // Elimina el elemento <label>.
+      $('label').remove()
+
+      // Registra el evento “focus” a la caja de texto para eliminar el texto de sugerencia y la clase de estilo “hint” cuando ésta tenga el foco.
         $('#cajaTexto').focus(function () {
-          $(this).val('')
-          $(this).removeClass('hint')
-        })
-
-        // Registra el evento “blur” a la caja de texto para restaurar el texto de sugerencia y la clase de estilo “hint” si no se ha insertado ningún valor al perder el foco.
-        $('#cajaTexto').blur(function () {
-          $(this).val('Nombre')
-          $(this).addClass('hint')
-        })
-
-        // Para comprobar las selecciones almacenalas todas en una variable y muéstrala en la consola del navegador mediante el comando Console.dir().
-        const seleccion = $('label, #cajaTexto, .hint')
-        console.dir(seleccion)
+        $(this).val('')
+        $(this).removeClass('hint')
       })
-    </script>
-  </body>
+
+      // Registra el evento “blur” a la caja de texto para restaurar el texto de sugerencia y la clase de estilo “hint” si no se ha insertado ningún valor al perder el foco.
+      $('#cajaTexto').blur(function () {
+        $(this).val('Nombre')
+        $(this).addClass('hint')
+      })
+
+      // Para comprobar las selecciones almacenalas todas en una variable y muéstrala en la consola del navegador mediante el comando Console.dir().
+      const seleccion = $('*')
+      console.dir(seleccion)
+    })
+  </script>
+</body>
+
 </html>
