@@ -49,34 +49,20 @@
                     left: "+=10px"
                 }, 0);
             });
-
         });
 
         $(document).ready(function () {
-            $("#arriba").click(function () {
-                $("#imagen").animate({
-                    top: "-=10px"
-                }, 0);
-            });
-            $("#abajo").click(function () {
-                $("#imagen").animate({
-                    top: "+=10px"
-                }, 0);
-            });
-            $("#izquierda").click(function () {
-                $("#imagen").animate({
-                    left: "-=10px"
-                }, 0);
-            });
-            $("#derecha").click(function () {
-                $("#imagen").animate({
-                    left: "+=10px"
-                }, 0);
-            });
-
-        });
-
-    </script>
+            function Mover(direccion) {
+                let imagen = $("#imagen");
+                let offset = imagen.offset();
+                let top = offset.top;
+                let left = offset.left;
+                let width = imagen.width();
+                let height = imagen.height();
+                let windowWidth = window.innerWidth;
+                let windowHeight = window.innerHeight;
+                
+        </script>
     <style>
         #imagen {
             position: absolute;
@@ -86,7 +72,6 @@
 
         #div1 {
             position: relative;
-
         }
     </style>
 </body>

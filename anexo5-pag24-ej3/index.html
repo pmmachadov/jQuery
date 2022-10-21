@@ -11,63 +11,80 @@
 <body>
 
     <!-- Modifica el ejercicio anterior para emplear únicamente una función de
-    Javascript llamada Mover.
-    Esta función deberá recibir como único parámetro
-    un valor que indique la dirección del movimiento de la imagen.
-    La función debe
-    evitar que la imagen salga de los límites visibles de la pantalla. Utiliza offset para completar el codigo.
-  -->
-    <div id="div1">
-        <img src="./assets/super-mario.jpg" alt="imagen" id="imagen">
-    </div>
-    <button id="arriba">Arriba</button>
-    <button id="abajo">Abajo</button>
-    <button id="izquierda">Izquierda</button>
-    <button id="derecha">Derecha</button>
+    Javascript llamada Mover. Esta función deberá recibir como único parámetro
+    un valor que indique la dirección del movimiento de la imagen. La función debe
+    evitar que la imagen salga de los límites visibles de la pantalla.  -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
-    ------window la
-    la resta de la imagen
-    la condicion que no llegue al numero
-
-
-    <div class="d-flex">
-        <div class="flex-shrink-0">
-            <img src="" alt="" width="300">
-        </div>
-        <div class="flex-grow-1 ms-3">
-            <h5 class="mt-0">Media heading</h5>
-        </div>
-    </div>
-    <script>
-        $(document).ready(function () {
-
-            // parseInt ?
-
+  <div id="window">
+    <img src="./assets/super-mario.jpg" alt="imagen" id="imagen">
+</div>
+<button id="arriba">Arriba</button>
+<button id="abajo">Abajo</button>
+<button id="izquierda">Izquierda</button>
+<button id="derecha">Derecha</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
+<script>
+    $(document).ready(function() {
+        let imagen = $("#imagen");
+        let arriba = $("#arriba");
+        let abajo = $("#abajo");
+        let izquierda = $("#izquierda");
+        let derecha = $("#derecha");
+        arriba.click(function() {
+            Mover("arriba");
         });
-        // calcular el ancho de la primer imagen
-        anchoImagen = $("img").first().width();
-        console.log(anchoImagen);
-        // calcular el alto de la primer imagen
-        altoImagen = $("img").first().height();
-        console.log(altoImagen);
-        // calcular el ancho de la ventana
-        anchoVentana = window.innerWidth;
-        console.log(anchoVentana);
-        // calcular el alto de la ventana
-        altoVentana = (window).innerHeight;
-        console.log(altoVentana);
+        abajo.click(function() {
+            Mover("abajo");
+        });
+        izquierda.click(function() {
+            Mover("izquierda");
+        });
+        derecha.click(function() {
+            Mover("derecha");
+        });
+        function Mover(direccion) {
+            let offset = imagen.offset();
+            let top = offset.top;
+            let left = offset.left;
+            let width = imagen.width();
+            let height = imagen.height();
+            let windowWidth = window.innerWidth;
+            let windowHeight = window.innerHeight;
+            switch (direccion) {
+                case "arriba":
+                    if (top > 0) {
+                        imagen.css("top", top - 10);
+                    }
+                    break;
+                case "abajo":
+                    if (top + height < windowHeight) {
+                        imagen.css("top", top + 10);
+                    }
+                    break;
+                case "izquierda":
+                    if (left > 0) {
+                        imagen.css("left", left - 10);
+                    }
+                    break;
+                case "derecha":
+                    if (left + width < windowWidth) {
+                        imagen.css("left", left + 10);
+                    }
+                    break;
+            }
+        }
+    });
 
-    </script>
+</script>
     <style>
-        #imagen {
-            position: absolute;
-        }
+    #imagen {
+        position: absolute;
+           }
 
-        #div1 {
-            position: relative;
-        }
-    </style>
+    #div1 {
+        position: relative;
+    }        
+</style>
 </body>
 
 </html>

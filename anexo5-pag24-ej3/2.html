@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+</head>
+
+<body>
+    <!-- Modifica el ejercicio anterior para emplear únicamente una función de
+    Javascript llamada Mover.
+    Esta función deberá recibir como único parámetro
+    un valor que indique la dirección del movimiento de la imagen (offset).
+     Si la imagen mas de 100% de la pantalla, no se mueve. -->
+
+    <div id="window">
+        <img src="./assets/super-mario.jpg" alt="imagen" id="imagen">
+    </div>
+    <button id="arriba">Arriba</button>
+    <button id="abajo">Abajo</button>
+    <button id="izquierda">Izquierda</button>
+    <button id="derecha">Derecha</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
+    <script>
+        $(document).ready(function() {
+            let imagen = $("#imagen");
+            let arriba = $("#arriba");
+            let abajo = $("#abajo");
+            let izquierda = $("#izquierda");
+            let derecha = $("#derecha");
+            arriba.click(function() {
+                Mover("arriba");
+            });
+            abajo.click(function() {
+                Mover("abajo");
+            });
+            izquierda.click(function() {
+                Mover("izquierda");
+            });
+            derecha.click(function() {
+                Mover("derecha");
+            });
+            function Mover(direccion) {
+                let offset = imagen.offset();
+                let top = offset.top;
+                let left = offset.left;
+                let width = imagen.width();
+                let height = imagen.height();
+                let windowWidth = window.innerWidth;
+                let windowHeight = window.innerHeight;
+                switch (direccion) {
+                    case "arriba":
+                        if (top > 0) {
+                            imagen.css("top", top - 10);
+                        }
+                        break;
+                    case "abajo":
+                        if (top + height < windowHeight) {
+                            imagen.css("top", top + 10);
+                        }
+                        break;
+                    case "izquierda":
+                        if (left > 0) {
+                            imagen.css("left", left - 10);
+                        }
+                        break;
+                    case "derecha":
+                        if (left + width < windowWidth) {
+                            imagen.css("left", left + 10);
+                        }
+                        break;
+                }
+            }
+        });
+ 
+</script>
+        <style>
+        #imagen {
+            position: absolute;
+               }
+
+        #div1 {
+            position: relative;
+        }        
+    </style>
+</body>
+</html>
