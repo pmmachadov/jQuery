@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>anexo3-pag35-ej1</title>
 </head>
-<body>
-	
-<head>
-
-	<style type="text/css">
-		body {
-			font-family: Arial, sans-serif;
-		}
-
-		h2 {
-			width: 80%;
-			height: auto;
-			text-align: center;
-			color: white;
-			background-color: blue;
-
-			margin-left: 10%;
-		}
-
-		small {
-			border: 2px solid tomato;
-			background-color: #FC9;
-		}
-	</style>
-</head>
 
 <body>
 
-	<h2>ANEXO 3 - Pag 35 implementar las siguientes selecciones empleando JQuery:</h2>
-	<ul>
+	<head>
+
+		<style type="text/css">
+			body {
+				font-family: Arial, sans-serif;
+			}
+
+			h2 {
+				width: 80%;
+				height: auto;
+				text-align: center;
+				color: white;
+				background-color: blue;
+
+				margin-left: 10%;
+			}
+
+			small {
+				border: 2px solid tomato;
+				background-color: #FC9;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<h2>ANEXO 3 - Pag 35 implementar las siguientes selecciones empleando JQuery:</h2>
+		<ul>
 			<li> Seleccionar todos los elementos div que poseen la clase “module”.</li>
 			<li> Seleccionar el tercer ítem de la lista desordenada con id= #myList.</li>
 			<li> Seleccionar el elemento label del elemento input utilizando un selector de
@@ -45,79 +47,79 @@
 			<li> Seleccionar todas las filas impares del cuerpo de la tabla.</li>
 			(*) Para comprobar las selecciones almacenalas en una variable y muéstrala en la consola del
 			navegador mediante el comando Console.dir().
-	</ul>
-	<small>
-		(*) Para comprobar las selecciones almacenalas en una variable y muéstrala en la consola del
-		navegador mediante el comando Console.dir().</small>
-	<hr>
-
-	<div class="module">
-		<ul id="myList">
-			<li>Fila con Index #0</li>
-			<li>Fila con Index #1</li>
-			<li>Fila con Index #2</li>
-			<li>Fila con Index #3</li>
 		</ul>
-	</div>
+		<small>
+			(*) Para comprobar las selecciones almacenalas en una variable y muéstrala en la consola del
+			navegador mediante el comando Console.dir().</small>
+		<hr>
 
-	<div>
-		<form id="formulario">
-			<label for="hombre">Hombre</label>
-			<input type="radio" name="gender" id="hombre" value="hombre"><br>
-			<label for="mujer">Mujer</label>
-			<input type="radio" name="gender" id="mujer" value="mujer"><br>
-			<label for="otro">Otro</label>
-			<input type="radio" name="gender" id="otro" value="otro"><br><br>
-		</form>
-	</div>
+		<div class="module">
+			<ul id="myList">
+				<li>Fila con Index #0</li>
+				<li>Fila con Index #1</li>
+				<li>Fila con Index #2</li>
+				<li>Fila con Index #3</li>
+			</ul>
+		</div>
 
-	<div class="module">
-		<table id="myTable" border="1">
-			<tr>
-				<td>Celda con Index #0</td>
-			</tr>
-			<tr>
-				<td>Celda con Index #1</td>
-			</tr>
-			<tr>
-				<td>Celda con Index #2</td>
-			</tr>
-			<tr>
-				<td>Celda con Index #3</td>
-			</tr>
-		</table>
-	</div>
+		<div>
+			<form id="formulario">
+				<label for="hombre">Hombre</label>
+				<input type="radio" name="gender" id="hombre" value="hombre"><br>
+				<label for="mujer">Mujer</label>
+				<input type="radio" name="gender" id="mujer" value="mujer"><br>
+				<label for="otro">Otro</label>
+				<input type="radio" name="gender" id="otro" value="otro"><br><br>
+			</form>
+		</div>
 
-	<div>
-		<img src="https://picsum.photos/200" height="200" width="200" alt="alternatetext">
-		<img src="https://picsum.photos/200" height="200" width="200" alt="alternatetext">
-	</div>
+		<div class="module">
+			<table id="myTable" border="1">
+				<tr>
+					<td>Celda con Index #0</td>
+				</tr>
+				<tr>
+					<td>Celda con Index #1</td>
+				</tr>
+				<tr>
+					<td>Celda con Index #2</td>
+				</tr>
+				<tr>
+					<td>Celda con Index #3</td>
+				</tr>
+			</table>
+		</div>
 
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script>
+		<div>
+			<img src="https://picsum.photos/200" height="200" width="200" alt="alternatetext">
+			<img src="https://picsum.photos/200" height="200" width="200" alt="alternatetext">
+		</div>
 
-		$().ready(function () {
-			// Seleccionar todos los elementos div que poseen la clase “module”.
-			let divModule = $("div.module");
-			console.dir(divModule);
-			// Seleccionar el tercer ítem de la lista desordenada con id= #myList.
-			let tercerItem = $("#myList li:eq(2)");
-			console.dir(tercerItem);
-			// Seleccionar el elemento label del elemento input utilizando un selector de atributo.
-			let labelInput = $("input[type='radio'] + label");
-			console.dir(labelInput);
-			// Averiguar cuantos elementos en la página están ocultos (length).
-			let elementosOcultos = $("*:hidden").length;
-			console.dir(elementosOcultos);
-			// Averiguar cuantas imágenes en la página poseen el atributo alt.
-			let imagenesAlt = $("img[alt]").length;
-			console.dir(imagenesAlt);
-			// Seleccionar todas las filas impares del cuerpo de la tabla.
-			let = $("#myTable tr:odd");
-			console.dir(let);
-		});
-	</script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script>
 
-</body>
+			$().ready(function () {
+				// Seleccionar todos los elementos div que poseen la clase “module”.
+				let divModule = $("div.module");
+				console.dir(divModule);
+				// Seleccionar el tercer ítem de la lista desordenada con id= #myList.
+				let tercerItem = $("#myList li:eq(2)");
+				console.dir(tercerItem);
+				// Seleccionar el elemento label del elemento input utilizando un selector de atributo.
+				let labelInput = $("input[type='radio'] + label");
+				console.dir(labelInput);
+				// Averiguar cuantos elementos en la página están ocultos (length).
+				let elementosOcultos = $("*:hidden").length;
+				console.dir(elementosOcultos);
+				// Averiguar cuantas imágenes en la página poseen el atributo alt.
+				let imagenesAlt = $("img[alt]").length;
+				console.dir(imagenesAlt);
+				// Seleccionar todas las filas impares del cuerpo de la tabla.
+				let = $("#myTable tr:odd");
+				console.dir(let);
+			});
+		</script>
+
+	</body>
 
 </html>
