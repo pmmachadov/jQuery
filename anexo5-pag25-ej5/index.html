@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -116,9 +116,14 @@
         $().ready(function () {
             //Ocultar todas las capas con la clase de estilo “module”
             $(".module").hide();
-            //Crear una lista desordenada antes de la primera capa con estilo “module”. Esta servirá de marco para las pestañas
-            $(".module").first().before("<ul id='menu'></ul>");
-            //Recorrer las capas con estilo “module” empleando $().each() y crear un elemento para la lista desordenada por cada capa con el texto presente en su encabezado <code>&lt;h2&gt;</code>. Estas son las pestañas.
+            //transforma los elementos h2 en elementos li
+            $("h2").each(function () {
+                $(this).replaceWith("<li>" + $(this).text() + "</li>");
+            });
+
+                 //Recorrer las capas con estilo “module” empleando $().each() y crear un elemento para la lista desordenada por cada capa con el texto presente en su encabezado <code>&lt;h2&gt;</code>. Estas son las pestañas.
+
+       
             $(".module").each(function (index) {
                 const titulo = $(this).find("h2").text();
                 $("#menu").append("<li>" + titulo + "</li>");
