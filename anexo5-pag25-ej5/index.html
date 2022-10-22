@@ -127,9 +127,18 @@
                 //Ocultar todos las capas con estilo “module” mostrando únicamente la correspondiente al elemento.
                 $(".module").hide();
                 $(".module").eq($(this).index()).show();
-                //Eliminar la clase “current” de todos los elementos de la lista añadiéndolo al elemento seleccionado, todo en una sola linea de codigo
-                
-                $("#menu li").removeClass("current").eq($(this).index()).addClass("current");
+                //Eliminar la clase “current” de todos los elementos de la lista añadiéndolo al elemento seleccionado, aplicar la clase "containerMenu" al elemento padre del elemento seleccionado.
+
+                // $("#menu li").removeClass("current").eq($(this).index()).addClass(["current",  "containerMenu"]);
+
+                $("#menu li").removeClass("current");
+                $(this).addClass("current");
+                $("#menu").parent().parent().addClass("containerMenu");
+                console.log(this);
+
+            
+
+   
             });
             //Mostrar la primera pestaña ( simulando la selección de la primera pestaña )
             $("#menu li").first().click();
