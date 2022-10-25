@@ -32,7 +32,7 @@ Si el usuario compra más de 5 Kg se le aplica un descuento por volumen de compr
 4% si paga con VISA, y del 2.5% si es MASTERCARD.
 
 Crear las siguientes funciones:
- ValidarVacio()  retorna cierto si la caja de texto del nombre tiene un valor. En caso contrario
+ validarVacio()  retorna cierto si la caja de texto del nombre tiene un valor. En caso contrario
 muestra el mensaje “No se ha indicado el nombre”, y retorna un valor falso.
  ValidarValor()  retorna cierto si la caja de texto del peso tiene un valor numérico
 comprendido entre 0.0 y 10.0. En caso contrario muestra el mensaje “Peso incorrecto.”, y
@@ -42,7 +42,7 @@ el mensaje “Debe seleccionar una fruta” y retorna falso.
  Calcular()  Función que es llamada al pulsarse el botón Calcular.
 
 Esta función comprueba
-llama primero a las funciones de validación anteriores: ValidarVacio(), ValidarValor() y
+llama primero a las funciones de validación anteriores: validarVacio(), ValidarValor() y
 ValidarSeleccion(). Si todas las funciones devuelven un valor lógico cierto entonces se cálcula el
 precio de la compra conforme a la fruta, el peso y la opción de pago seleccionados, mostrando
 el resultado por pantalla.  -->
@@ -74,6 +74,7 @@ el resultado por pantalla.  -->
     <script>
         $(document).ready(function () {
             $("input[type='submit']").click(function () {
+                event.preventDefault();
                 const nombre = $("#nombre").val();
                 const fruta = $("#fruta").val();
                 const visa = $("#visa").val();
@@ -87,7 +88,7 @@ el resultado por pantalla.  -->
                 } else if (peso < 0 || peso > 10) {
                     alert("Peso incorrecto");
                 } else {
-                    const precio = 0;
+                    let precio = 0;
                     switch (fruta) {
                         case "naranjas":
                             precio = 3;
@@ -113,47 +114,49 @@ el resultado por pantalla.  -->
                     }
                     alert("El precio es: " + precio);
                 }
+            })
+        });
 
-            });
-        
-            ValidarVacio() { //retorna cierto si la caja de texto del nombre tiene un valor. En caso contrario muestra el mensaje “No se ha indicado el nombre”, y retorna un valor falso.
-                const nombre = $("#nombre").val();
-                if (nombre == "") {
-                    alert("No se ha indicado el nombre");
-                    return false;
-                } else {
-                    return true;
-                }
-            }            
-
-            ValidarValor() { //retorna cierto si la caja de texto del peso tiene un valor numérico comprendido entre 0.0 y 10.0. En caso contrario muestra el mensaje “Peso incorrecto.”, y retorna un valor falso.
-                const peso = $("#peso").val();
-                if (peso < 0 || peso > 10) {
-                    alert("Peso incorrecto");
-                    return false;
-                } else {
-                    return true;
-                }
+        validarVacio = () => { //retorna cierto si la caja de texto del nombre tiene un valor. En caso contrario muestra el mensaje “No se ha indicado el nombre”, y retorna un valor falso.
+            const nombre = $("#nombre").val();
+            if (nombre == "") {
+                alert("No se ha indicado el nombre");
+                return false;
+            } else {
+                return true;
             }
-            
-            ValidarSeleccion() { //retorna cierto si se ha seleccionado una fruta. En caso contrario muestra el mensaje “Debe seleccionar una fruta” y retorna falso.
+        }
+
+        ValidarValor = () => { //retorna cierto si la caja de texto del peso tiene un valor numérico comprendido entre 0.0 y 10.0. En caso contrario muestra el mensaje “Peso incorrecto.”, y retorna un valor falso.
+            const peso = $("#peso").val();
+            if (peso < 0 || peso > 10) {
+                alert("Peso incorrecto. Debe estar entre 0 y 10.");
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        ValidarSeleccion = () => { //retorna cierto si se ha seleccionado una fruta. En caso contrario muestra el mensaje “Debe seleccionar una fruta” y retorna falso.
+            const fruta = $("#fruta").val();
+            if (fruta == "") {
+                alert("Debe seleccionar una fruta");
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        calcular = () => { //Función que es llamada al pulsarse el botón Calcular. Esta función comprueba llama primero a las funciones de validación anteriores: validarVacio(), ValidarValor() y ValidarSeleccion(). Si todas las funciones devuelven un valor lógico cierto entonces se cálcula el precio de la compra conforme a la fruta, el peso y la opción de pago seleccionados, mostrando el resultado por pantalla.
+
+            if (validarVacio() && ValidarValor() && ValidarSeleccion()) {
                 const fruta = $("#fruta").val();
-                if (fruta == "") {
-                    alert("Debe seleccionar una fruta");
-                    return false;
-                } else {
-                    return true;
-                }
+                const peso = $("#peso").val();
+                const visa = $("#visa").val();
+                const mastercard = $("#mastercard").val();
             }
+        }
 
-            calcular() { //Función que es llamada al pulsarse el botón Calcular. Esta función comprueba llama primero a las funciones de validación anteriores: ValidarVacio(), ValidarValor() y ValidarSeleccion(). Si todas las funciones devuelven un valor lógico cierto entonces se cálcula el precio de la compra conforme a la fruta, el peso y la opción de pago seleccionados, mostrando el resultado por pantalla.
-               
-                if (ValidarVacio() && ValidarValor() && ValidarSeleccion()) {
-                    const fruta = $("#fruta").val();
-                    const peso = $("#peso").val();
-                    const visa = $("#visa").val();
-                    const mastercard = $("#mastercard").val();
-                });
     </script>
 </body>
 
