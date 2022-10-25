@@ -127,16 +127,30 @@
                 //Ocultar todos las capas con estilo “module” mostrando únicamente la correspondiente al elemento.
                 $(".module").hide();
                 $(".module").eq($(this).index()).show();
-                //Eliminar la clase “current” de todos los elementos de la lista añadiéndolo al elemento seleccionado, aplicar la clase "containerMenu" al elemento padre del elemento seleccionado.
+                // Dar la clase containerMenu solamente al segundo menu 
+                $(".containerMenu").eq($(".menu").index()).addClass("current");
+                    
 
-                // $("#menu li").removeClass("current").eq($(this).index()).addClass(["current",  "containerMenu"]);
+                //Determinar que clases tiene el elemento menu
+                var clases = $(".menu").attr("class");
+                                console.log(clases);
+                
+                //Eliminar la clase “current” de todos los elementos de la lista añadiéndolo al elemento seleccionado, aplicar la clase "containerMenu" al elemento padre del elemento seleccionado solamente para el #menu ul li que aparece en segundo lugar.
 
                 $("#menu li").removeClass("current");
                 $(this).addClass("current");
-                $("#menu").parent().parent().addClass("containerMenu");
-                console.log(this);
 
-            
+               
+
+                
+
+                // $("#menu li").removeClass("current").eq($(this).index()).addClass(["current",  "containerMenu"]);
+
+                // $("#menu li").removeClass("current");
+                // $(this).addClass("current");
+                // $("#menu").parent().parent().eq($(this).index().addClass("containerMenu"));
+
+                            
 
    
             });
