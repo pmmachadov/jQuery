@@ -61,9 +61,9 @@ el resultado por pantalla.  -->
         </select>
         <br>
         <label for="visa">Visa</label>
-        <input type="radio" name="visa" id="visa">
+        <input type="radio" name="creditCard" id="visa">
         <label for="mastercard">Mastercard</label>
-        <input type="radio" name="mastercard" id="mastercard">
+        <input type="radio" name="creditCard" id="mastercard">
         <br>
         <label for="peso">Peso</label>
         <input type="number" name="peso" id="peso">
@@ -112,7 +112,7 @@ el resultado por pantalla.  -->
                     } else {
                         precio = precio * peso;
                     }
-                    alert("El precio es: " + precio);
+                    alert(`El precio es ${precio} €`);
                 }
             })
         });
