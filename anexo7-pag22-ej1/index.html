@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>anexo7-pag22-ej1</title>
+</head>
+
+<body>
+    <!-- Utiliza jquery y crea una página web provista de un formulario para realizar compras online para una
+fruteria. El formulario debe contener los siguientes controles:
+ 1 caja de texto para el nombre del comprador.
+ 1 lista con las siguientes opciones: “Naranjas”, “Manzanas”, “Limones”,
+“Tomates”.
+ 2 botones de opción <option>: “VISA” y “MASTERCARD”.
+ 1 caja de texto para el peso en kilos.
+ 1 boton con el texto “Calcular”
+
+El usuario debe introducir obligatoriamente un nombre, seleccionar una fruta, una
+opción de compra e indicar el peso mediante un valor numérico válido entre 0 y 10Kg.
+Cuando el usuario pulse el botón de envío debe calcularse y mostrarse el importe total
+de la compra según los siguientes precios estipulados:
+
+ Naranjas: 3€ / kg
+ Limones: 2.25€ / kg
+ Manzanas: 2.50€/kg
+ Tomates: 4.25€/kg
+
+Si el usuario compra más de 5 Kg se le aplica un descuento por volumen de compra del
+4% si paga con VISA, y del 2.5% si es MASTERCARD.
+
+Crear las siguientes funciones:
+ ValidarVacio()  retorna cierto si la caja de texto del nombre tiene un valor. En caso contrario
+muestra el mensaje “No se ha indicado el nombre”, y retorna un valor falso.
+ ValidarValor()  retorna cierto si la caja de texto del peso tiene un valor numérico
+comprendido entre 0.0 y 10.0. En caso contrario muestra el mensaje “Peso incorrecto.”, y
+retorna un valor falso.
+ ValidarSeleccion()  retorna cierto si se ha seleccionado una fruta. En caso contrario muestra
+el mensaje “Debe seleccionar una fruta” y retorna falso.
+ Calcular()  Función que es llamada al pulsarse el botón Calcular.
+
+Esta función comprueba
+llama primero a las funciones de validación anteriores: ValidarVacio(), ValidarValor() y
+ValidarSeleccion(). Si todas las funciones devuelven un valor lógico cierto entonces se cálcula el
+precio de la compra conforme a la fruta, el peso y la opción de pago seleccionados, mostrando
+el resultado por pantalla.  -->
+
+
+    <form action="index.html" method="get">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre">
+        <br>
+        <label for="fruta">Fruta</label>
+        <select name="fruta" id="fruta">
+            <option value="naranjas">Naranjas</option>
+            <option value="manzanas">Manzanas</option>
+            <option value="limones">Limones</option>
+            <option value="tomates">Tomates</option>
+        </select>
+        <br>
+        <label for="visa">Visa</label>
+        <input type="radio" name="visa" id="visa">
+        <label for="mastercard">Mastercard</label>
+        <input type="radio" name="mastercard" id="mastercard">
+        <br>
+        <label for="peso">Peso</label>
+        <input type="number" name="peso" id="peso">
+        <br>
+        <input type="submit" value="Calcular">
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("input[type='submit']").click(function () {
+                const nombre = $("#nombre").val();
+                const fruta = $("#fruta").val();
+                const visa = $("#visa").val();
+                const mastercard = $("#mastercard").val();
+                const peso = $("#peso").val();
+
+                if (nombre == "") {
+                    alert("No se ha indicado el nombre");
+                } else if (fruta == "") {
+                    alert("Debe seleccionar una fruta");
+                } else if (peso < 0 || peso > 10) {
+                    alert("Peso incorrecto");
+                } else {
+                    const precio = 0;
+                    switch (fruta) {
+                        case "naranjas":
+                            precio = 3;
+                            break;
+                        case "limones":
+                            precio = 2.25;
+                            break;
+                        case "manzanas":
+                            precio = 2.5;
+                            break;
+                        case "tomates":
+                            precio = 4.25;
+                            break;
+                    }
+                    if (peso > 5) {
+                        if (visa == "on") {
+                            precio = precio * peso * 0.96;
+                        } else if (mastercard == "on") {
+                            precio = precio * peso * 0.975;
+                        }
+                    } else {
+                        precio = precio * peso;
+                    }
+                    alert("El precio es: " + precio);
+                }
+
+            });
+        
+            ValidarVacio() { //retorna cierto si la caja de texto del nombre tiene un valor. En caso contrario muestra el mensaje “No se ha indicado el nombre”, y retorna un valor falso.
+                const nombre = $("#nombre").val();
+                if (nombre == "") {
+                    alert("No se ha indicado el nombre");
+                    return false;
+                } else {
+                    return true;
+                }
+            }            
+
+            ValidarValor() { //retorna cierto si la caja de texto del peso tiene un valor numérico comprendido entre 0.0 y 10.0. En caso contrario muestra el mensaje “Peso incorrecto.”, y retorna un valor falso.
+                const peso = $("#peso").val();
+                if (peso < 0 || peso > 10) {
+                    alert("Peso incorrecto");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            
+            ValidarSeleccion() { //retorna cierto si se ha seleccionado una fruta. En caso contrario muestra el mensaje “Debe seleccionar una fruta” y retorna falso.
+                const fruta = $("#fruta").val();
+                if (fruta == "") {
+                    alert("Debe seleccionar una fruta");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            calcular() { //Función que es llamada al pulsarse el botón Calcular. Esta función comprueba llama primero a las funciones de validación anteriores: ValidarVacio(), ValidarValor() y ValidarSeleccion(). Si todas las funciones devuelven un valor lógico cierto entonces se cálcula el precio de la compra conforme a la fruta, el peso y la opción de pago seleccionados, mostrando el resultado por pantalla.
+               
+                if (ValidarVacio() && ValidarValor() && ValidarSeleccion()) {
+                    const fruta = $("#fruta").val();
+                    const peso = $("#peso").val();
+                    const visa = $("#visa").val();
+                    const mastercard = $("#mastercard").val();
+                });
+    </script>
+</body>
+
+</html>
