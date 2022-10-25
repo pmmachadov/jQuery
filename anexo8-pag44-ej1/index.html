@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>anexo8-pag44-ej1</title>
+</head>
+<body>
+
+    <!-- Utiliza jquery ui para: crear una página que muestre una tabla de contactos indicando DNI, Nombre y Telefono
+que muestre por defecto el contacto “11111111A”, Administrador, 555-000-001.
+Al final de la tabla debe mostrarse un botón “Añadir”, y a la derecha de cada contacto en la
+tabla otro botón “Eliminar”:
+Cuando el usuario pulse el botón “Añadir” debe mostrarse un cuadro de diálogo con un
+formulario en el que el usuario introduzca el DNI, nombre y teléfono de un nuevo contacto. El
+cuadro de diálogo debe mostrar un botón “OK” para confirmar el alta, y otro “Cancelar”:
+Cuando el usuario pulsa el botón “OK” debe comprobarse que se haya introducido un valor en
+las tres cajas de texto. De no ser así, debe teñirse de rojo la caja vacía y mostrar un mensaje
+indicativo a su lado derecho:
+Si el usuario ha introducido datos en todas las cajas de texto al pulsar el botón “OK” debe
+cerrarse el cuadro de diálogo y añadir los datos del nuevo contacto a la tabla de la página
+incluyendo el botón “Eliminar”.
+Al pulsar el botón “Eliminar” de una fila, ésta debe eliminarse de la tabla solicitando antes una
+confirmación mostrando el nombre y DNI del usuario.
+Si el usuario responde “Aceptar” debe eliminarse los datos del contacto de la tabla.  -->
+
+    <div id="dialog-form" title="Crear nuevo contacto">
+        <p class="validateTips">Todos los campos son obligatorios.</p>
+        <form>
+            <fieldset>
+                <label for="name">DNI</label>
+                <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
+                <label for="email">Nombre</label>
+                <input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all">
+                <label for="password">Teléfono</label>
+                <input type="text" name="password" id="password" value="" class="text ui-widget-content ui-corner-all">
+            </fieldset>
+        </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="./jquery-ui.css">
+    <script>
+    $(document).ready(function(){
+        //creamos la tabla
+        const tabla = $("<table></table>");
+        tabla.attr("id","tabla");
+        tabla.attr("border","1");
+        tabla.attr("style","border-collapse:collapse");
+        const tr = $("<tr></tr>");
+        const th1 = $("<th></th>");
+        th1.text("DNI");
+        const th2 = $("<th></th>");
+        th2.text("Nombre");
+        const th3 = $("<th></th>");
+        th3.text("Telefono");
+        const th4 = $("<th></th>");
+        th4.text("Eliminar");
+        tr.append(th1);
+        tr.append(th2);
+        tr.append(th3);
+        tr.append(th4);
+        tabla.append(tr);
+        //creamos el boton añadir
+        const boton = $("<button></button>");
+        boton.text("Añadir");
+        boton.attr("id","boton");
+        //creamos el div que contendra la tabla y el boton
+        const div = $("<div></div>");
+        div.attr("id","div");
+        div.append(tabla);
+        div.append(boton);
+        //añadimos el div a la pagina
+        $("body").append(div);
+        //creamos el dialogo
+        const dialogo = $("<div></div>");
+        dialogo.attr("id","dialogo");
+        dialogo.attr("title","Añadir contacto");
+        const form = $("<form></form>");
+        form.attr("id","form");
+        const label1 = $("<label></label>");
+        label1.text("DNI");
+        const input1 = $("<input></input>");
+        input1.attr("type","text");
+        input1.attr("id","dni");
+        const label2 = $("<label></label>");
+        label2.text("Nombre");
+        const input2 = $("<input></input>");
+        input2.attr("type","text");
+        input2.attr("id","nombre");
+        const label3 = $("<label></label>");
+        label3.text("Telefono");
+        const input3 = $("<input></input>");
+        input3.attr("type","text");
+        input3.attr("id","telefono");
+        form.append(label1);
+        form.append(input1);
+        form.append(label2);
+        form.append(input2);
+        form.append(label3);
+        form.append(input3);
+        dialogo.append(form);
+        $("body").append(dialogo);
+        //creamos el dialogo de confirmacion
+        const dialogo2 = $("<div></div>");
+        dialogo2.attr("id","dialogo2");
+        dialogo2.attr("title","Eliminar contacto");
+        const p = $("<p></p>");
+        p.text("¿Estas seguro de que quieres eliminar este contacto?");
+        dialogo2.append(p);
+        $("body").append(dialogo2);
+        //creamos el dialogo de error
+        const dialogo3 = $("<div></div>");
+        dialogo3.attr("id","dialogo3");
+        dialogo3.attr("title","Error");
+        const p2 = $("<p></p>");
+        p2.text("Debes rellenar todos los campos");
+        dialogo3.append(p2);
+        $("body").append(dialogo3);
+        //creamos el contacto por defecto
+        const tr2 = $("<tr></tr>");
+        const td1 = $("<td></td>");
+        td1.text("11111111A");
+        const td2 = $("<td></td>");
+        td2.text("Administrador");
+        const td3 = $("<td></td>");
+        td3.text("654796868");
+        const td4 = $("<td></td>");
+        const boton2 = $("<button></button>");
+        boton2.text("Eliminar");
+        boton2.attr("class","boton2");
+        td4.append(boton2);
+        tr2.append(td1);
+        tr2.append(td2);
+        tr2.append(td3);
+        tr2.append(td4);
+        tabla.append(tr2);
+        //creamos el evento click del boton añadir
+        $("#boton").click(function(){
+            $("#dialogo").dialog({
+                modal:true,
+                buttons:{
+                    "OK":function(){
+                        const dni = $("#dni").val();
+                        const nombre = $("#nombre").val();
+                        const telefono = $("#telefono").val();
+                        if(dni == "" || nombre == "" || telefono == ""){
+                            $("#dialogo3").dialog({
+                                modal:true,
+                                buttons:{
+                                    "OK":function(){
+                                        $(this).dialog("close");
+                                    }
+                                }
+                            });
+                        }else{
+                            const tr3 = $("<tr></tr>");
+                            const td5 = $("<td></td>");
+                            td5.text(dni);
+                            const td6 = $("<td></td>");
+                            td6.text(nombre);
+                            const td7 = $("<td></td>");
+                            td7.text(telefono);
+                            const td8 = $("<td></td>");
+                            const boton3 = $("<button></button>");
+                            boton3.text("Eliminar");
+                            boton3.attr("class","boton2");
+                            td8.append(boton3);
+                            tr3.append(td5);
+                            tr3.append(td6);
+                            tr3.append(td7);
+                            tr3.append(td8);
+                            tabla.append(tr3);
+                            $(this).dialog("close");
+                        }
+                    },
+                    "Cancelar":function(){
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+        //creamos el evento click de los botones eliminar
+        $(".boton2").live("click",function(){
+            $("#dialogo2").dialog({
+                modal:true,
+                buttons:{
+                    "OK":function(){
+                        $(this).parent().parent().remove();
+                        $(this).dialog("close");
+                    },
+                    "Cancelar":function(){
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    });
+
+</script>
+</body>
+</html>
