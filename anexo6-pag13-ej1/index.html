@@ -6,141 +6,148 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>anexo6-pag13-ej1</title>
-
     <style type="text/css">
         body {
             font-family: Arial, sans-serif;
         }
 
         h3 {
-            width: 80%;
-            height: auto;
-            text-align: center;
-            color: white;
             background-color: blue;
-            margin-left: 10%;
-        }
-
-        small {
-            border: 2px solid tomato;
-            background-color: #FC9;
-        }
-
-        .containerMenu ul {
+            color: white;
+            cursor: pointer;
             text-align: center;
-            list-style-type: none;
-            background: beige;
         }
 
-        .containerMenu ul li {
-            border: solid;
-            width: 200px;
-            margin: 5px;
-            display: inline-block;
+        p {
+            display: none;
         }
 
-        .current {
-            background: lightgreen;
+        #nav {
+            width: 250px;
+        }
+
+        #nav li {
+            background-color: blue;
+            border-radius: 5px;
+            border: 1px solid #000;
+            color: white;
+            cursor: pointer;
+            display: block;
+            margin-top: 2px;
+            padding: 5px;
+            width: auto;
+        }
+
+        #nav li ul {
+            display: none;
+        }
+
+        #slideshow {
+            padding: 0;
+        }
+
+        #slideshow li {
+            background-color: rgb(226, 226, 226);
+            border-radius: 5px;
+            border: 1px solid #000;
+            color: rgb(0, 0, 0);
+            display: none;
+            list-style: none;
+            margin-top: 2px;
+            padding: 10px;
+            width: auto;
+        }
+
+        #slideshow li:first-child {
+            display: block;
         }
     </style>
 </head>
 
 <body>
-    <h3 id="identificador">ANEXO 5 - Pag 25 Ej 5 JQuery:</h3>
-    <h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum minima vero atque non quas sint similique, id
-        nostrum minus deleniti esse tempore temporibus, fugiat qui iusto dolor cupiditate ipsa vitae.
-    </h3>
-    <ul>
-        <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum minima vero atque non quas sint similique,
-            id nostrum minus deleniti esse tempore temporibus, fugiat qui iusto dolor cupiditate ipsa vitae.</li>
-        <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum minima vero atque non quas sint similique,
-            id nostrum minus deleniti esse tempore temporibus, fugiat qui iusto dolor cupiditate ipsa vitae.</li>
-        <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum minima vero atque non quas sint similique,
-            id nostrum minus deleniti esse tempore temporibus, fugiat qui iusto dolor cupiditate ipsa vitae.</li>
-        <li> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum minima vero atque non quas sint similique,
-            id nostrum minus deleniti esse tempore temporibus, fugiat qui iusto dolor cupiditate ipsa vitae.
-            <ul>
-                <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum minima vero atque non quas sint
-                    similique, id nostrum minus deleniti esse tempore temporibus, fugiat qui iusto dolor cupiditate ipsa
-                    vitae.</li>
-                <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum minima vero atque non quas sint
-                    similique, id nostrum minus deleniti esse tempore temporibus, fugiat qui iusto dolor cupiditate ipsa
-                    vitae.
+    <h1>EJERCICIOS ANEXO 6</h1>
+    <h2 id="identificador1">ANEXO 6 - Pag 13 Ej 1</h1>
+        <div id="blog">
+            <article>
+                <h3>Nacimiento de JavaScript</h3>
+                <p>JavaScript fue desarrollado originalmente por Brendan Eich de Netscape con el nombre de Mocha, el
+                    cual fue renombrado posteriormente a LiveScript, para finalmente quedar como JavaScript. El cambio
+                    de nombre coincidió aproximadamente con el momento en que Netscape agregó compatibilidad con la
+                    tecnología Java en su navegador web Netscape Navigator en la versión 2002 en diciembre de 1995. La
+                    denominación produjo confusión, dando la impresión de que el lenguaje es una prolongación de Java, y
+                    fue considerada por muchos como una estrategia de mercadotecnia de Netscape para obtener prestigio e
+                    innovar en el ámbito de los nuevos lenguajes de programación web.</p>
+            </article>
+            <article>
+                <h3>JavaScript en el lado servidor</h3>
+                <p>Netscape introdujo una implementación de script del lado del servidor con Netscape Enterprise Server,
+                    lanzada en diciembre de 1994 (poco después del lanzamiento de JavaScript para navegadores web). A
+                    partir de mediados de la década de los 2000, ha habido una proliferación de implementaciones de
+                    JavaScript para el lado servidor. Node.js es uno de los notables ejemplos de JavaScript en el lado
+                    del servidor, siendo usado en proyectos importantes.</p>
+            </article>
+            <article>
+                <h3>Desarrollos posteriores</h3>
+                <p>JavaScript se ha convertido en uno de los lenguajes de programación más populares en internet y más
+                    usados. Al principio, sin embargo, muchos desarrolladores renegaban del lenguaje porque el público
+                    al que va dirigido lo formaban publicadores de artículos y demás aficionados, entre otras razones.
+                    La llegada de Ajax devolvió JavaScript a la fama y atrajo la atención de muchos otros programadores.
+                </p>
+            </article>
+        </div>
+        <h2 id="identificador2">ANEXO 6 - Pag 13 Ej 2</h1>
+            <ul id="nav">
+                <li>Home</li>
+                <li>Contact</li>
+                <li class="submenu">
+                    Resources
+                    <ul>
+                        <li>Resource 1</li>
+                        <li>Resource 2</li>
+                        <li>Resource 3</li>
+                    </ul>
                 </li>
-                <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum minima vero atque non quas sint
-                    similique, id nostrum minus deleniti esse tempore temporibus, fugiat qui iusto dolor cupiditate ipsa
-                    vitae.li>
             </ul>
-        </li>
-    </ul>
-    <small>Cipsa</small>
-
-    <hr>
-    <div class="containerMenu">
-        CONTENIDO
-    </div>
-    <hr>
-    <div class="module">
-        <h3>LISTA</h3>
-        <ul id="myList">
-            <li>Fila con Index #0</li>
-            <li>Fila con Index #1</li>
-            <li>Fila con Index #2</li>
-            <li>Fila con Index #3</li>
-        </ul>
-    </div>
-
-    <div class="module">
-        <h3>FORMULARIO</h3>
-        <form id="formulario">
-            <label for="hombre">Hombre</label>
-            <input type="radio" name="gender" id="hombre" value="hombre"><br>
-            <label for="mujer">Mujer</label>
-            <input type="radio" name="gender" id="mujer" value="mujer"><br>
-            <label for="otro">Otro</label>
-            <input type="radio" name="gender" id="otro" value="otro"><br><br>
-        </form>
-    </div>
-
-    <div class="module">
-        <h3>TABLA</h3>
-        <table id="myTable" border="1">
-            <tr>
-                <td>Celda con Index #0</td>
-            </tr>
-            <tr>
-                <td>Celda con Index #1</td>
-            </tr>
-            <tr>
-                <td>Celda con Index #2</td>
-            </tr>
-            <tr>
-                <td>Celda con Index #3</td>
-            </tr>
-        </table>
-    </div>
-    <div class="module">
-        <h3>IMAGENES</h3>
-        <img src="https://loremflickr.com/320/240" alt="img1">
-    </div>
-    <div>
-        CONTENIDO EXTRA
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
-    <script>
-
-        $().ready(function () {
-            // En la página se muestra una capa <div> con el identificador “blog”. Esta capa
-            // contiene una serie de párrafos encabezados por un elemento <h3> cada uno.
-            // Se pide que al hacer click en cada encabezado <h3> se muestre el párrafo
-            // correspondiente ocultándose el resto.
-            // Utiliza jquery “:visible” y “:hidden”.
-            $('h3').click(function () {
-                $(this).next().toggle();
-            });
-        });
-
-    </script>
+            <h2 id="identificador3">ANEXO 6 - Pag 13 Ej 3</h1>
+                <ul id="slideshow">
+                    <li>
+                        <h1>Fruit</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </li>
+                    <li>
+                        <h1>Vegetables</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </li>
+                    <li>
+                        <h1>Bread</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </li>
+                </ul>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
+                <script>
+                    $().ready(function () {
+                        // Utilizando jquery: En la página se muestra una capa < div > con el identificador “blog”. Esta capa
+                        // contiene una serie de párrafos encabezados por un elemento <h3> cada uno.
+                        // Se pide que al hacer click en cada encabezado <h3> se muestre el párrafo
+                        // correspondiente ocultándose el resto.
+                        // Utilizar los selectores “:visible” y “:hidden”. 
+                        $("#blog h3").click(function () {
+                            $(this).next().toggle();
+                        });
+                    });
+                </script>
 </body>
 
 </html>
