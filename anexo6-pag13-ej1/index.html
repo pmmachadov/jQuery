@@ -145,6 +145,33 @@
                         // Utilizar los selectores “:visible” y “:hidden”. 
                         $("#blog h3").click(function () {
                             $(this).next().toggle();
+
+                            //                             En la página se muestra una barra de navegación con tres opciones. La opción
+                            // “Resources” cuenta con un submenú que no es visible por defecto ya que tiene
+                            // asignado la regla de estilo “#nav li ul” definida en styles.css con la propiedad
+                            // “display:none”.
+                            // Se pide que al posicionarse el puntero del ratón sobre la opción “Resources” se muestre mediante JQuery la lista de subopciones y que se oculte al desplazarse el puntero fuera. 
+
+                            $("#nav li.submenu").hover(function () {
+                                $(this).find("ul").show();
+                            }, function () {
+                                $(this).find("ul").hide();
+                            });
+
+
+                            //                             En la página se muestra un elemento <ul> con el identificador “slideshow”. Se
+                            // pide que mediante JQuery, se muestren cada uno de los elementos <li>
+                            // durante un segundo cíclicamente. Así pues, primero debe mostrarse durante 1
+                            // segundo el contenido “Fruit”, después “Vegetables”, después “Bread”, y volver
+                            // a mostrar “Fruit” nuevamente.
+                            // (*) Para ayudarte puede emplear encadenamiento de efectos, haciendo que
+                            // cada elemento se muestre, espere un segundo, se oculte, e invoque a una función que muestre el siguiente. 
+
+                            $("#slideshow li").hide();
+                            $("#slideshow li:first").show();
+                            setInterval(function () {
+                                $("#slideshow li:first").fadeOut(1000).next().fadeIn(1000).appendTo("#slideshow");
+                            }, 3000);
                         });
                     });
                 </script>
