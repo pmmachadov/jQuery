@@ -85,7 +85,7 @@ el resultado por pantalla.  -->
                     alert("No se ha indicado el nombre");
                 } else if (fruta == "") {
                     alert("Debe seleccionar una fruta");
-                } else if (peso < 0 || peso > 10) {
+                } else if (peso <= 0 || peso > 10) {
                     alert("Peso incorrecto");
                 } else {
                     let precio = 0;
@@ -129,7 +129,7 @@ el resultado por pantalla.  -->
 
         ValidarValor = () => { //retorna cierto si la caja de texto del peso tiene un valor numérico comprendido entre 0.0 y 10.0. En caso contrario muestra el mensaje “Peso incorrecto.”, y retorna un valor falso.
             const peso = $("#peso").val();
-            if (peso < 0 || peso > 10) {
+            if (peso <= 0 || peso > 10) {
                 alert("Peso incorrecto. Debe estar entre 0 y 10.");
                 return false;
             } else {
@@ -156,7 +156,6 @@ el resultado por pantalla.  -->
                 const mastercard = $("#mastercard").val();
             }
         }
-
     </script>
 </body>
 
