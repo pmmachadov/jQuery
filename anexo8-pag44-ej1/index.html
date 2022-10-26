@@ -9,8 +9,7 @@
 </head>
 
 <body>
-
-    <!-- Utiliza jquery ui para: crear una página que muestre una tabla de contactos indicando DNI, Nombre y Telefono
+    <!-- Utiliza jquery ui y jquery para: crear una página que muestre una tabla de contactos indicando DNI, Nombre y Telefono
 que muestre por defecto el contacto “11111111A”, Administrador, 555-000-001.
 Al final de la tabla debe mostrarse un botón “Añadir”, y a la derecha de cada contacto en la
 tabla otro botón “Eliminar”:
@@ -25,174 +24,147 @@ cerrarse el cuadro de diálogo y añadir los datos del nuevo contacto a la tabla
 incluyendo el botón “Eliminar”.
 Al pulsar el botón “Eliminar” de una fila, ésta debe eliminarse de la tabla solicitando antes una
 confirmación mostrando el nombre y DNI del usuario.
-Si el usuario responde “Aceptar” debe eliminarse los datos del contacto de la tabla.  -->
+Si el usuario responde “Aceptar” debe eliminarse los datos del contacto de la tabla. No utilizar modal.-->
 
-    <div id="dialog-form" title="Crear nuevo contacto">
+    <script src="./jquery-3.6.1.js"></script>
+    <script src="./jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="./jquery-ui.css">
+
+    <div id="dialog-form" title="Añadir contacto">
         <p class="validateTips">Todos los campos son obligatorios.</p>
         <form>
             <fieldset>
-                <label for="name">DNI</label>
-                <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
-                <label for="email">Nombre</label>
-                <input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all">
-                <label for="password">Teléfono</label>
-                <input type="text" name="password" id="password" value="" class="text ui-widget-content ui-corner-all">
+                <label for="dni">DNI</label>
+                <input type="text" name="dni" id="dni" value="" class="text ui-widget-content ui-corner-all">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre" value="" class="text ui-widget-content ui-corner-all">
+                <label for="telefono">Telefono</label>
+                <input type="text" name="telefono" id="telefono" value="" class="text ui-widget-content ui-corner-all">
             </fieldset>
         </form>
-        <style>
-            .ui-dialog .ui-state-error {
-                padding: .3em;
+    </div>
+
+    <table id="users" border="1">
+        <thead>
+            <tr>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>11111111A</td>
+                <td>Administrador</td>
+                <td>555-000-001</td>
+                <td><button class="eliminar">Eliminar</button></td>
+            </tr>
+            <tr>
+                <td>22222222B</td>
+                <td>Usuario</td>
+                <td>555-000-002</td>
+                <td><button class="eliminar">Eliminar</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <button id="create-user">Añadir</button>
+
+    <script>
+        $(document).ready(function () { 
+            let dialog, form, 
+                dni = $("#dni"),
+                nombre = $("#nombre"),
+                telefono = $("#telefono"),
+                allFields = $([]).add(dni).add(nombre).add(telefono),
+                tips = $(".validateTips");
+
+            function updateTips(t) {
+                tips
+                    .text(t)
+                    .addClass("ui-state-highlight");
+                setTimeout(function () {
+                    tips.removeClass("ui-state-highlight", 1500);
+                }, 500);
             }
 
-            .validateTips {
-                border: 1px solid transparent;
-                padding: 0.3em;
+            function checkLength(o, n, min, max) { //o = objeto, n = nombre, min = minimo, max = maximo
+                if (o.val().length > max || o.val().length < min) {
+                    o.addClass("ui-state-error");
+                    updateTips("La longitud de " + n + " debe estar entre " +
+                        min + " y " + max + ".");
+                    return false;
+                } else {
+                    return true;
+                }
             }
-        </style>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
-        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-        <link rel="stylesheet" href="./jquery-ui.css">
-        <script>
-            $(document).ready(function () {
-                //creamos la tabla
-                const tabla = $("<table></table>");
-                tabla.attr("id", "tabla");
-                tabla.attr("border", "1");
-                tabla.attr("style", "border-collapse:collapse");
-                const tr = $("<tr></tr>");
-                const th1 = $("<th></th>");
-                th1.text("DNI");
-                const th2 = $("<th></th>");
-                th2.text("Nombre");
-                const th3 = $("<th></th>");
-                th3.text("Telefono");
-                const th4 = $("<th></th>");
-                th4.text("Eliminar");
-                tr.append(th1);
-                tr.append(th2);
-                tr.append(th3);
-                tr.append(th4);
-                tabla.append(tr);
-                //creamos el boton añadir
-                const boton = $("<button></button>");
-                boton.text("Añadir");
-                boton.attr("id", "boton");
-                //creamos el div que contendra la tabla y el boton
-                const div = $("<div></div>");
-                div.attr("id", "div");
-                div.append(tabla);
-                div.append(boton);
-                //añadimos el div a la pagina
-                $("body").append(div);
-                //creamos el dialogo
-                const dialogo = $("<div></div>");
-                dialogo.attr("id", "dialogo");
-                dialogo.attr("title", "Añadir contacto");
-                const form = $("<form></form>");
-                form.attr("id", "form");
-                const label1 = $("<label></label>");
-                label1.text("DNI");
-                const input1 = $("<input></input>");
-                input1.attr("type", "text");
-                input1.attr("id", "dni");
-                const label2 = $("<label></label>");
-                label2.text("Nombre");
-                const input2 = $("<input></input>");
-                input2.attr("type", "text");
-                input2.attr("id", "nombre");
-                const label3 = $("<label></label>");
-                label3.text("Telefono");
-                const input3 = $("<input></input>");
-                input3.attr("type", "text");
-                input3.attr("id", "telefono");
-                form.append(label1);
-                form.append(input1);
-                form.append(label2);
-                form.append(input2);
-                form.append(label3);
-                form.append(input3);
-                dialogo.append(form);
-                $("body").append(dialogo);
-                //creamos el contacto por defecto
-                const tr2 = $("<tr></tr>");
-                const td1 = $("<td></td>");
-                td1.text("11111111A");
-                const td2 = $("<td></td>");
-                td2.text("Administrador");
-                const td3 = $("<td></td>");
-                td3.text("555-000-001");
-                const td4 = $("<td></td>");
-                const boton2 = $("<button></button>");
-                boton2.text("Eliminar");
-                boton2.attr("class", "boton2");
-                td4.append(boton2);
-                tr2.append(td1);
-                tr2.append(td2);
-                tr2.append(td3);
-                tr2.append(td4);
-                tabla.append(tr2);
-                //creamos el evento click del boton añadir
-                $("#boton").click(function () {
-                    $("#dialogo").dialog({
-                        modal: true,
-                        buttons: {
-                            "OK": function () {
-                                const dni = $("#dni").val();
-                                const nombre = $("#nombre").val();
-                                const telefono = $("#telefono").val();
-                                if (dni == "" || nombre == "" || telefono == "") {
-                                    alert("Debes rellenar todos los campos");
-                                    modal = true;
-                                    buttons: {
-                                        "OK": function() {
-                                            $(this).dialog("close");
-                                        }
-                                    }
-                                }
-                            } else {
-                                const tr3 = $("<tr></tr>");
-                                const td5 = $("<td></td>");
-                                td5.text(dni);
-                                const td6 = $("<td></td>");
-                                td6.text(nombre);
-                                const td7 = $("<td></td>");
-                                td7.text(telefono);
-                                const td8 = $("<td></td>");
-                                const boton3 = $("<button></button>");
-                                boton3.text("Eliminar");
-                                boton3.attr("class", "boton2");
-                                td8.append(boton3);
-                                tr3.append(td5);
-                                tr3.append(td6);
-                                tr3.append(td7);
-                                tr3.append(td8);
-                                tabla.append(tr3);
-                                $(this).dialog("close");
-                            }
-                        },
-                        "Cancelar": function () {
-                            $(this).dialog("close");
-                        }
+            function checkRegexp(o, regexp, n) { //Comprueba que el valor de un campo coincida con una expresión regular
+                if (!(regexp.test(o.val()))) {
+                    o.addClass("ui-state-error");
+                    updateTips(n);
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            function addUser() { //Añade un usuario a la tabla
+                let valid = true;
+                allFields.removeClass("ui-state-error");
+
+                valid = valid && checkLength(dni, "dni", 7, 14);
+                valid = valid && checkLength(nombre, "nombre", 1, 50);
+                valid = valid && checkLength(telefono, "telefono", 7, 25);
+                valid = valid && checkRegexp(dni, /^[0-9a-zA-Z]+$/, "El DNI debe contener solo letras y números.");
+                valid = valid && checkRegexp(nombre, /^[a-z]([0-9a-z_\s])+$/i, "El nombre debe contener solo letras, números, espacios y guiones bajos.");
+                valid = valid && checkRegexp(telefono, /^[0-9]+$/, "El telefono debe contener solo números.");
+              
+                if (valid) {
+                    $("#users tbody").append("<tr>" +
+                        "<td>" + dni.val() + "</td>" +
+                        "<td>" + nombre.val() + "</td>" +
+                        "<td>" + telefono.val() + "</td>" +
+                        "<td><button class='eliminar'>Eliminar</button></td>" +
+                        "</tr>");
+                    dialog.dialog("close");
+                }
+                return valid; //Devuelve true si el usuario es válido
+            }
+
+            dialog = $("#dialog-form").dialog({ //Crea el dialogo
+                autoOpen: false,
+                height: 400,
+                width: 350,
+                modal: true,
+                buttons: {
+                    "Añadir": addUser,
+                    Cancel: function () {
+                        dialog.dialog("close");
                     }
+                },
+                close: function () { //Resetea el formulario
+                    form[0].reset();
+                    allFields.removeClass("ui-state-error");
+                }
             });
+
+            form = dialog.find("form").on("submit", function (event) { //Cuando se envia el formulario
+                event.preventDefault();
+                addUser();
             });
-            //creamos el evento click de los botones eliminar
-            $(".boton2").live("click", function () {
-                $("#dialogo2").dialog({
-                    modal: true,
-                    buttons: {
-                        "OK": function () {
-                            $(this).parent().parent().remove();
-                            $(this).dialog("close");
-                        },
-                        "Cancelar": function () {
-                            $(this).dialog("close");
-                        }
-                    }
-                });
+
+            $("#create-user").button().on("click", function () { //Cuando se pulsa el boton de añadir
+                dialog.dialog("open");
             });
-        </script>
+
+            $("#users").on("click", ".eliminar", function () { //Cuando se pulsa el boton de eliminar
+                $(this).closest("tr").remove();
+            });
+        });
+    </script>    
 </body>
 
 </html>
