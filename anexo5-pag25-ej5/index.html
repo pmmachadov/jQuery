@@ -23,12 +23,12 @@
             border: 2px solid tomato;
             background-color: #FC9;
         }
-        .containerMenu ul {
+        .containercontainerMenu ul {
             text-align: center;
             list-style-type: none;
             background: beige;
         }
-        .containerMenu ul li {
+        .containercontainerMenu ul li {
             border: solid;
             width: 200px;
             margin: 5px;
@@ -46,7 +46,7 @@
     <ul>
         <li>Oculta todas las capas con la clase de estilo “module”</li>
         <li>Crea una lista desordenada antes de la primera capa con estilo “module”. Esta servirá de marco para las
-            pestañas</li>
+            pestañas. Todas las partes de la pagina deben adquirir su estilo css de la referencia dentro de style</li>
         <li>Recorre las capas con estilo “module” empleando $().each() y crea un elemento para la lista desordenada por
             cada capa con el texto presente en su encabezado <code>&lt;h2&gt;</code>. Estas son las pestañas.</li>
         <li> Registra el evento “click” a cada elemento de la lista de modo que se realicen las siguientes operaciones:
@@ -60,7 +60,7 @@
     </ul>
     <small>Cipsa</small>
     <hr>
-    <div class="containerMenu">
+    <div class="containercontainerMenu">
         CONTENIDO
     </div>
     <hr>
@@ -116,46 +116,24 @@
         $().ready(function () {
             //Ocultar todas las capas con la clase de estilo “module”
             $(".module").hide();
-            //Crear una lista desordenada antes de la primera capa con estilo “module”. Esta servirá de marco para las pestañas
-            $(".module").first().before("<ul id='menu'></ul>");
-            //Recorrer las capas con estilo “module” empleando $().each() y crear un elemento para la lista desordenada por cada capa con el texto presente en su encabezado <code>&lt;h2&gt;</code>. Estas son las pestañas.
+            //Crear una lista desordenada antes de la primera capa con estilo “module”
+            $(".module").first().before("<ul id='containerMenu'></ul>");
+            //Recorrer las capas con estilo “module” y crear un elemento para la lista desordenada por cada capa con el texto presente en su encabezado <code>&lt;h2&gt;</code>
             $(".module").each(function (index) {
-                $("#menu").append("<li id='tab" + index + "'>" + $(this).find("h2").text() + "</li>");
+                var titulo = $(this).find("h2").text();
+                $("#containerMenu").append("<li id='tab" + index + "'>" + titulo + "</li>");
             });
-            //Registrar el evento “click” a cada elemento de la lista de modo que se realicen las siguientes operaciones:
-            $("#menu li").click(function () {
+            //Registra el evento “click” a cada elemento de la lista de modo que se realicen las siguientes operaciones:
+            $("#containerMenu li").click(function () {
                 //Ocultar todos las capas con estilo “module” mostrando únicamente la correspondiente al elemento.
                 $(".module").hide();
                 $(".module").eq($(this).index()).show();
-                // Dar la clase containerMenu solamente al segundo menu 
-                $(".containerMenu").eq($(".menu").index()).addClass("current");
-                    
-
-                //Determinar que clases tiene el elemento menu
-                var clases = $(".menu").attr("class");
-                                console.log(clases);
-                
-                //Eliminar la clase “current” de todos los elementos de la lista añadiéndolo al elemento seleccionado, aplicar la clase "containerMenu" al elemento padre del elemento seleccionado solamente para el #menu ul li que aparece en segundo lugar.
-
-                $("#menu li").removeClass("current");
+                //Eliminar la clase “current” de todos los elementos de la lista añadiéndolo al elemento seleccionado
+                $("#containerMenu li").removeClass("current");
                 $(this).addClass("current");
-
-               
-
-                
-
-                // $("#menu li").removeClass("current").eq($(this).index()).addClass(["current",  "containerMenu"]);
-
-                // $("#menu li").removeClass("current");
-                // $(this).addClass("current");
-                // $("#menu").parent().parent().eq($(this).index().addClass("containerMenu"));
-
-                            
-
-   
             });
             //Mostrar la primera pestaña ( simulando la selección de la primera pestaña )
-            $("#menu li").first().click();
+            $("#containerMenu li").first().click();
         });
        
     </script>
