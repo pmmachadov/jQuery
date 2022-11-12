@@ -120,8 +120,8 @@
             $(".module").first().before("<ul id='containerMenu'></ul>");
             //Recorrer las capas con estilo “module” y crear un elemento para la lista desordenada por cada capa con el texto presente en su encabezado <code>&lt;h2&gt;</code>
             $(".module").each(function (index) {
-                var titulo = $(this).find("h2").text();
-                $("#containerMenu").append("<li id='tab" + index + "'>" + titulo + "</li>");
+                let titulo = $(this).find("h2").text();
+                $("#containerMenu").prepend("<li id='tab" + index + "'>" + titulo + "</li>");
             });
             //Registra el evento “click” a cada elemento de la lista de modo que se realicen las siguientes operaciones:
             $("#containerMenu li").click(function () {
