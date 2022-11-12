@@ -129,13 +129,13 @@
                 $("#containerMenu").prepend("<li id='tab" + index + "'>" + titulo + "</li>");
             });
             $(".containerMenu ul li").click(function () {
-                $(".module").hide();
-                $(".containerMenu ul").removeClass("current");
-                $(this).addClass("current");
-                $(".module").hide();
-                $(".module").eq($(this).index()).show();
+                $(".module").hide(); //Oculto todos los divs
+                $(this).addClass("current"); //Añadimos la clase current al elemento seleccionado
+                $(".containerMenu ul li").not(this).removeClass("current"); //Eliminamos la clase current a los demás elementos
+                $(".module").hide(); //Para que no se queden visibles los modulos
+                $(".module").eq($(this).index()).show(); //Muestro el div correspondiente al tab pulsado
             });
-            $(".containerMenu ul li").first().click();
+            $(".containerMenu ul li").first().click(); //Simulo el click en el primer tab
         });
     </script>
 </body>
