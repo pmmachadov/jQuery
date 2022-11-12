@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            width: 80%;
+            height: auto;
+            text-align: center;
+            color: white;
+            background-color: blue;
+            margin-left: 10%;
+        }
+
+        small {
+            border: 2px solid tomato;
+            background-color: #FC9;
+        }
+
+        .containerMenu ul {
+            text-align: center;
+            list-style-type: none;
+            background: beige;
+        }
+
+        .containerMenu ul li {
+            border: solid;
+            width: 200px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .current {
+            background: lightgreen;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    Crear un menu con tab activa de diferente color cuando se de click en ella.
+    Debe ser un menu con 5 tabs.
+    Cada tab debe tener un titulo y dos parrafos como contenido. Solo se debe mostrar el contenido de la tab
+    correspondiente.
+    La clase current debe ocultarse cuando se de click en otra tab. La clase .module debe ocultarse al cargar la pagina.
+
+    Ocultar todas las capas con la clase de estilo “module”
+    <div class="containerMenu">
+        <ul>
+            <li>Tab 1</li>
+            <li>Tab 2</li>
+            <li>Tab 3</li>
+            <li>Tab 4</li>
+            <li>Tab 5</li>
+        </ul>
+    </div>
+    <div class="containerContent">
+        <div class="module">
+            <h2>Tab 1</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+        </div>
+        <div class="module">
+            <h2>Tab 2</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+        </div>
+        <div class="module">
+            <h2>Tab 3</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+        </div>
+        <div class="module">
+            <h2>Tab 4</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+        </div>
+        <div class="module">
+            <h2>Tab 5</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $(".module").hide();
+                $(".containerMenu ul li").click(function () {
+                    $(".containerMenu ul li").removeClass("current");
+                    $(this).addClass("current");
+                    $(".module").hide();
+                    $(".module").eq($(this).index()).show();
+                });
+            });
+        </script>
+</body>
+
+</html>

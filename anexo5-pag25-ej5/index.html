@@ -11,34 +11,42 @@
         body {
             font-family: Arial, sans-serif;
         }
+
         h2 {
             width: 80%;
             height: auto;
             text-align: center;
             color: white;
             background-color: blue;
+
             margin-left: 10%;
         }
+
         small {
             border: 2px solid tomato;
             background-color: #FC9;
         }
+
         .containerMenu ul {
             text-align: center;
             list-style-type: none;
             background: beige;
+
         }
+
         .containerMenu ul li {
             border: solid;
             width: 200px;
             margin: 5px;
             display: inline-block;
         }
+
         .current {
             background: lightgreen;
         }
     </style>
 </head>
+
 <body>
     <h2 id="identificador">ANEXO 5 - Pag 25 Ej 5 JQuery:</h2>
     <h3>Tomando como punto de partida la página ‘index.html’, implementar las siguientes operaciones para simular un
@@ -60,7 +68,7 @@
     </ul>
     <small>Cipsa</small>
     <hr>
-    <div class="containercontainerMenu">
+    <div class="containerMenu">
         CONTENIDO
     </div>
     <hr>
@@ -114,28 +122,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
     <script>
         $().ready(function () {
-            //Ocultar todas las capas con la clase de estilo “module”
             $(".module").hide();
-            //Crear una lista desordenada antes de la primera capa con estilo “module”
-            $(".module").first().before("<ul id='containerMenu'></ul>");
-            //Recorrer las capas con estilo “module” y crear un elemento para la lista desordenada por cada capa con el texto presente en su encabezado <code>&lt;h2&gt;</code>
+            $(".containerMenu").first().prepend("<ul id='containerMenu'></ul>");
             $(".module").each(function (index) {
                 let titulo = $(this).find("h2").text();
                 $("#containerMenu").prepend("<li id='tab" + index + "'>" + titulo + "</li>");
             });
-            //Registra el evento “click” a cada elemento de la lista de modo que se realicen las siguientes operaciones:
-            $("#containerMenu li").click(function () {
-                //Ocultar todos las capas con estilo “module” mostrando únicamente la correspondiente al elemento.
+            $(".containerMenu ul li").click(function () {
+                $(".module").hide();
+                $(".containerMenu ul").removeClass("current");
+                $(this).addClass("current");
                 $(".module").hide();
                 $(".module").eq($(this).index()).show();
-                //Eliminar la clase “current” de todos los elementos de la lista añadiéndolo al elemento seleccionado
-                $("#containerMenu li").removeClass("current");
-                $(this).addClass("current");
             });
-            //Mostrar la primera pestaña ( simulando la selección de la primera pestaña )
-            $("#containerMenu li").first().click();
+            $(".containerMenu ul li").first().click();
         });
-       
     </script>
 </body>
+
 </html>
